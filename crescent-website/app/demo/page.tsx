@@ -7,7 +7,6 @@ import { Card } from "@/components/ui/Card";
 import { SERVICES } from "@/lib/constants";
 import { FaRocket, FaCheckCircle, FaLaptopCode, FaChartLine } from "react-icons/fa";
 import { useState } from "react";
-import Image from "next/image";
 
 export default function DemoPage() {
     const [formData, setFormData] = useState({
@@ -32,80 +31,83 @@ export default function DemoPage() {
     };
 
     return (
-        <div className="min-h-screen bg-slate-50 relative overflow-hidden">
-            {/* Background Decorations */}
-            <div className="absolute top-0 right-0 w-[50vw] h-[50vh] bg-gradient-to-l from-primary-100/40 to-transparent pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary-200/20 rounded-full blur-3xl animate-float pointer-events-none" />
-            <div className="absolute top-20 right-20 w-64 h-64 bg-primary-200/20 rounded-full blur-3xl animate-float pointer-events-none" style={{ animationDelay: '1.5s' }} />
+        <div className="min-h-screen theme-bg relative overflow-hidden">
+            {/* Ambient Background */}
+            <div className="absolute inset-0 bg-mesh-dark opacity-100 z-0"></div>
 
-            <div className="pt-32 pb-20 relative z-10">
+            {/* Cinematic Glows */}
+            <div className="absolute inset-0 z-0 pointer-events-none">
+                <div className="absolute top-[-10%] right-[-10%] w-[60vw] h-[60vw] max-w-[1000px] max-h-[1000px] bg-primary-600/10 rounded-full blur-[120px] animate-float-slow"></div>
+                <div className="absolute bottom-[-20%] left-[-10%] w-[50vw] h-[50vw] max-w-[800px] max-h-[800px] bg-secondary-600/10 rounded-full blur-[100px] animate-float" style={{ animationDelay: '2s' }}></div>
+            </div>
+
+            {/* Grid Overlay */}
+            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PHBhdGggZD0iTTAgMGg0MHY0MEgwVjB6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTAgMGg0MHYxSDBWMHptMCAzOWg0MHYxSDB2LTF6TTAgMmgxdjM4SDBWMnptMzkgMGgxdjM4aC0xVjJ6IiBmaWxsPSJyZ2JhKDEyOCwxMjgsMTI4LDAuMDUpIi8+PC9zdmc+')] opacity-50 z-0 pointer-events-none"></div>
+
+            <div className="pt-32 pb-24 relative z-10 min-h-screen flex items-center">
                 <Container>
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
                         {/* Left Column: Content & Benefits */}
-                        <div className="lg:col-span-5 space-y-8">
+                        <div className="lg:col-span-5 space-y-10 mt-8 lg:mt-16">
                             <AnimatedSection direction="right">
-                                <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight">
-                                    Experience the <br />
-                                    <span className="gradient-text">Future of Management</span>
+                                <div className="inline-flex items-center gap-2 px-4 py-1.5 glass rounded-full mb-6 border border-secondary-500/30">
+                                    <span className="relative flex h-2 w-2">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary-400 opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full h-2 w-2 bg-secondary-500"></span>
+                                    </span>
+                                    <span className="text-xs text-secondary-400 font-semibold tracking-wide uppercase">
+                                        Live Demonstration
+                                    </span>
+                                </div>
+                                <h1 className="text-5xl md:text-6xl font-black mb-6 tracking-tight leading-[1.1]">
+                                    <span className="theme-text">Experience the </span>
+                                    <br />
+                                    <span className="gradient-text-alt drop-shadow-[0_0_15px_rgba(139,92,246,0.3)]">Future of Mgt.</span>
                                 </h1>
-                                <p className="text-xl text-slate-600 mb-8 leading-relaxed">
-                                    See firsthand how our software solutions can streamline your operations, reduce costs, and improved efficiency.
+                                <p className="text-xl theme-text-muted mb-8 leading-relaxed font-light">
+                                    See firsthand how our avant-garde software solutions can streamline your operations, reduce overhead, and drastically improve efficiency.
                                 </p>
                             </AnimatedSection>
 
                             <AnimatedSection direction="right" delay={0.2}>
                                 <div className="space-y-6">
-                                    <div className="flex items-start gap-4 p-4 glass rounded-xl border-l-4 border-l-primary-500">
-                                        <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center shrink-0 mt-1">
-                                            <FaLaptopCode className="text-primary-600 text-lg" />
+                                    {[
+                                        { icon: FaLaptopCode, title: "Live Walkthrough", desc: "Personalized tour of features relevant to your business needs.", color: "primary" },
+                                        { icon: FaChartLine, title: "ROI Analysis", desc: "See the potential impact on your bottom line with real metrics.", color: "secondary" },
+                                        { icon: FaCheckCircle, title: "Q&A Session", desc: "Technical deep-dive with our elite solution architects.", color: "neon-purple" }
+                                    ].map((item, i) => (
+                                        <div key={i} className="flex items-start gap-5 p-5 glass rounded-2xl transition-colors group" style={{ border: '1px solid var(--border-primary)' }}>
+                                            <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 mt-0.5 shadow-inner group-hover:scale-110 transition-transform" style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-secondary)' }}>
+                                                <item.icon className={`text-xl ${item.color === 'primary' ? 'text-primary-400 drop-shadow-[0_0_8px_rgba(0,240,255,0.8)]' : item.color === 'secondary' ? 'text-secondary-400 drop-shadow-[0_0_8px_rgba(176,38,255,0.8)]' : 'text-purple-400 drop-shadow-[0_0_8px_rgba(168,85,247,0.8)]'}`} />
+                                            </div>
+                                            <div>
+                                                <h3 className="font-bold theme-text-secondary text-lg mb-1 group-hover:theme-text transition-colors">{item.title}</h3>
+                                                <p className="theme-text-muted text-sm font-light leading-relaxed">{item.desc}</p>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <h3 className="font-bold text-slate-800 text-lg">Live Walkthrough</h3>
-                                            <p className="text-slate-600 text-sm">Personalized tour of features relevant to your business needs.</p>
-                                        </div>
-                                    </div>
-
-                                    <div className="flex items-start gap-4 p-4 glass rounded-xl border-l-4 border-l-secondary-500">
-                                        <div className="w-10 h-10 bg-secondary-100 rounded-full flex items-center justify-center shrink-0 mt-1">
-                                            <FaChartLine className="text-secondary-600 text-lg" />
-                                        </div>
-                                        <div>
-                                            <h3 className="font-bold text-slate-800 text-lg">ROI Analysis</h3>
-                                            <p className="text-slate-600 text-sm">See the potential impact on your bottom line with real metrics.</p>
-                                        </div>
-                                    </div>
-
-                                    <div className="flex items-start gap-4 p-4 glass rounded-xl border-l-4 border-l-indigo-500">
-                                        <div className="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center shrink-0 mt-1">
-                                            <FaCheckCircle className="text-indigo-600 text-lg" />
-                                        </div>
-                                        <div>
-                                            <h3 className="font-bold text-slate-800 text-lg">Q&A Session</h3>
-                                            <p className="text-slate-600 text-sm">Technical deep-dive with our solution architects.</p>
-                                        </div>
-                                    </div>
+                                    ))}
                                 </div>
                             </AnimatedSection>
-
-
                         </div>
 
                         {/* Right Column: Form */}
                         <div className="lg:col-span-7">
                             <AnimatedSection direction="left" delay={0.4}>
-                                <Card className="p-8 md:p-10 glass-strong shadow-2xl relative overflow-hidden">
-                                    <div className="absolute -top-10 -right-10 w-40 h-40 bg-secondary-500/10 rounded-full blur-2xl pointer-events-none" />
+                                <Card className="p-8 md:p-12 glass-strong shadow-2xl relative overflow-hidden border border-primary-500/20 rounded-[2rem]">
+                                    {/* Form internal glows */}
+                                    <div className="absolute -top-20 -right-20 w-64 h-64 bg-primary-500/10 rounded-full blur-3xl pointer-events-none" />
+                                    <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-secondary-500/10 rounded-full blur-3xl pointer-events-none" />
 
-                                    <div className="mb-8">
-                                        <h2 className="text-3xl font-bold text-slate-800 mb-2">Schedule Your Demo</h2>
-                                        <p className="text-slate-500">Fill in your details and we'll set up a time that works for you.</p>
+                                    <div className="mb-10 relative z-10 pb-6" style={{ borderBottom: '1px solid var(--border-primary)' }}>
+                                        <h2 className="text-3xl font-bold theme-text mb-3">Schedule Your Demo</h2>
+                                        <p className="theme-text-muted font-light">Fill in your details and we&apos;ll set up a time that perfectly aligns with your schedule.</p>
                                     </div>
 
-                                    <form onSubmit={handleSubmit} className="space-y-6">
+                                    <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                             <div className="group">
-                                                <label htmlFor="name" className="block text-sm font-semibold text-slate-700 mb-2 ml-1">
-                                                    Full Name <span className="text-red-500">*</span>
+                                                <label htmlFor="name" className="block text-sm font-semibold theme-text-secondary mb-2 ml-1 tracking-wide">
+                                                    Full Name <span className="text-primary-500">*</span>
                                                 </label>
                                                 <input
                                                     type="text"
@@ -114,13 +116,14 @@ export default function DemoPage() {
                                                     required
                                                     value={formData.name}
                                                     onChange={handleChange}
-                                                    className="w-full px-5 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all hover:bg-white"
+                                                    className="w-full px-5 py-4 rounded-xl focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all shadow-inner"
+                                                    style={{ backgroundColor: 'var(--bg-input)', border: '1px solid var(--border-secondary)', color: 'var(--text-primary)' }}
                                                     placeholder="John Doe"
                                                 />
                                             </div>
                                             <div className="group">
-                                                <label htmlFor="email" className="block text-sm font-semibold text-slate-700 mb-2 ml-1">
-                                                    Work Email <span className="text-red-500">*</span>
+                                                <label htmlFor="email" className="block text-sm font-semibold theme-text-secondary mb-2 ml-1 tracking-wide">
+                                                    Work Email <span className="text-primary-500">*</span>
                                                 </label>
                                                 <input
                                                     type="email"
@@ -129,7 +132,8 @@ export default function DemoPage() {
                                                     required
                                                     value={formData.email}
                                                     onChange={handleChange}
-                                                    className="w-full px-5 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all hover:bg-white"
+                                                    className="w-full px-5 py-4 rounded-xl focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all shadow-inner"
+                                                    style={{ backgroundColor: 'var(--bg-input)', border: '1px solid var(--border-secondary)', color: 'var(--text-primary)' }}
                                                     placeholder="john@company.com"
                                                 />
                                             </div>
@@ -137,8 +141,8 @@ export default function DemoPage() {
 
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                             <div className="group">
-                                                <label htmlFor="phone" className="block text-sm font-semibold text-slate-700 mb-2 ml-1">
-                                                    Phone Number <span className="text-red-500">*</span>
+                                                <label htmlFor="phone" className="block text-sm font-semibold theme-text-secondary mb-2 ml-1 tracking-wide">
+                                                    Phone Number <span className="text-primary-500">*</span>
                                                 </label>
                                                 <input
                                                     type="tel"
@@ -147,12 +151,13 @@ export default function DemoPage() {
                                                     required
                                                     value={formData.phone}
                                                     onChange={handleChange}
-                                                    className="w-full px-5 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all hover:bg-white"
+                                                    className="w-full px-5 py-4 rounded-xl focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all shadow-inner"
+                                                    style={{ backgroundColor: 'var(--bg-input)', border: '1px solid var(--border-secondary)', color: 'var(--text-primary)' }}
                                                     placeholder="+1 (555) 000-0000"
                                                 />
                                             </div>
                                             <div className="group">
-                                                <label htmlFor="company" className="block text-sm font-semibold text-slate-700 mb-2 ml-1">
+                                                <label htmlFor="company" className="block text-sm font-semibold theme-text-secondary mb-2 ml-1 tracking-wide">
                                                     Company Name
                                                 </label>
                                                 <input
@@ -161,15 +166,16 @@ export default function DemoPage() {
                                                     name="company"
                                                     value={formData.company}
                                                     onChange={handleChange}
-                                                    className="w-full px-5 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all hover:bg-white"
+                                                    className="w-full px-5 py-4 rounded-xl focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all shadow-inner"
+                                                    style={{ backgroundColor: 'var(--bg-input)', border: '1px solid var(--border-secondary)', color: 'var(--text-primary)' }}
                                                     placeholder="Acme Corp"
                                                 />
                                             </div>
                                         </div>
 
                                         <div className="group">
-                                            <label htmlFor="service" className="block text-sm font-semibold text-slate-700 mb-2 ml-1">
-                                                Solution of Interest <span className="text-red-500">*</span>
+                                            <label htmlFor="service" className="block text-sm font-semibold theme-text-secondary mb-2 ml-1 tracking-wide">
+                                                Solution of Interest <span className="text-primary-500">*</span>
                                             </label>
                                             <div className="relative">
                                                 <select
@@ -178,7 +184,8 @@ export default function DemoPage() {
                                                     required
                                                     value={formData.service}
                                                     onChange={handleChange}
-                                                    className="w-full px-5 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all hover:bg-white appearance-none cursor-pointer"
+                                                    className="w-full px-5 py-4 rounded-xl focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all appearance-none cursor-pointer shadow-inner"
+                                                    style={{ backgroundColor: 'var(--bg-input)', border: '1px solid var(--border-secondary)', color: 'var(--text-primary)' }}
                                                 >
                                                     <option value="">Select a solution...</option>
                                                     {SERVICES.map((service) => (
@@ -187,14 +194,14 @@ export default function DemoPage() {
                                                         </option>
                                                     ))}
                                                 </select>
-                                                <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-500">
-                                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                                                <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-primary-500 drop-shadow-[0_0_5px_rgba(0,240,255,0.5)]">
+                                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7"></path></svg>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div className="group">
-                                            <label htmlFor="message" className="block text-sm font-semibold text-slate-700 mb-2 ml-1">
+                                            <label htmlFor="message" className="block text-sm font-semibold theme-text-secondary mb-2 ml-1 tracking-wide">
                                                 Specific Requirements
                                             </label>
                                             <textarea
@@ -203,17 +210,20 @@ export default function DemoPage() {
                                                 rows={4}
                                                 value={formData.message}
                                                 onChange={handleChange}
-                                                className="w-full px-5 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all hover:bg-white resize-none"
+                                                className="w-full px-5 py-4 rounded-xl focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all resize-none shadow-inner"
+                                                style={{ backgroundColor: 'var(--bg-input)', border: '1px solid var(--border-secondary)', color: 'var(--text-primary)' }}
                                                 placeholder="Tell us about your current challenges..."
                                             />
                                         </div>
 
-                                        <Button type="submit" variant="primary" size="lg" icon={<FaRocket />} className="w-full py-4 text-lg shadow-xl shadow-primary-500/20 hover:shadow-primary-500/40 hover:-translate-y-1 transition-all">
-                                            Request Free Demo
-                                        </Button>
+                                        <div className="pt-4">
+                                            <Button type="submit" variant="neon" size="lg" icon={<FaRocket className="text-xl" />} className="w-full py-5 text-xl font-bold rounded-xl tracking-wide">
+                                                Request Free Demo
+                                            </Button>
+                                        </div>
 
-                                        <p className="text-xs text-slate-400 text-center mt-4">
-                                            No credit card required. Your data is secure with us.
+                                        <p className="text-xs theme-text-muted text-center mt-6 font-light">
+                                            No credit card required. Your data is encrypted and secure with us.
                                         </p>
                                     </form>
                                 </Card>
