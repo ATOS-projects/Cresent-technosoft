@@ -1,20 +1,17 @@
 'use client';
 
 import { Container } from "@/components/ui/Container";
-import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { Button } from "@/components/ui/Button";
-import { Card } from "@/components/ui/Card";
 import { CONTACT_INFO } from "@/lib/constants";
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaPaperPlane } from "react-icons/fa";
 import { useState } from "react";
-import Image from "next/image";
 
 export default function ContactPage() {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         phone: '',
-        subject: '',
+        organization: '',
         message: ''
     });
 
@@ -23,7 +20,7 @@ export default function ContactPage() {
         alert('Thank you for contacting us! We will get back to you soon.');
     };
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
@@ -31,222 +28,216 @@ export default function ContactPage() {
     };
 
     return (
-        <div className="min-h-screen theme-bg relative overflow-hidden">
-            {/* Ambient Background */}
-            <div className="absolute inset-0 bg-mesh-dark opacity-100 z-0"></div>
-
-            {/* Cinematic Glows */}
-            <div className="absolute inset-0 z-0 pointer-events-none">
-                <div className="absolute top-0 left-[-10%] w-[50vw] h-[50vw] max-w-[800px] max-h-[800px] bg-primary-600/10 rounded-full blur-[120px] animate-float-slow"></div>
-                <div className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] max-w-[1000px] max-h-[1000px] bg-secondary-600/10 rounded-full blur-[120px] animate-float" style={{ animationDelay: '1.5s' }}></div>
-            </div>
-
-            {/* Grid Overlay */}
-            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PHBhdGggZD0iTTAgMGg0MHY0MEgwVjB6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTAgMGg0MHYxSDBWMHptMCAzOWg0MHYxSDB2LTF6TTAgMmgxdjM4SDBWMnptMzkgMGgxdjM4aC0xVjJ6IiBmaWxsPSJyZ2JhKDEyOCwxMjgsMTI4LDAuMDUpIi8+PC9zdmc+')] opacity-50 z-0 pointer-events-none"></div>
-
-            <div className="pt-32 pb-24 relative z-10 min-h-screen flex items-center">
+        <div className="min-h-screen bg-white">
+            {/* Hero Section */}
+            <div className="bg-gradient-to-br from-sky-50 to-white pt-32 pb-16">
                 <Container>
-                    <AnimatedSection direction="up">
-                        <div className="text-center mb-16 lg:mb-24 mt-8 lg:mt-12">
-                            <span className="text-primary-400 font-semibold tracking-wider uppercase text-sm mb-4 block">Get In Touch</span>
-                            <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tight leading-[1.1]">
-                                <span className="theme-text">Let&apos;s </span>
-                                <span className="gradient-text drop-shadow-[0_0_15px_rgba(0,240,255,0.3)]">Connect</span>
-                            </h1>
-                            <p className="text-xl theme-text-muted max-w-2xl mx-auto font-light leading-relaxed">
-                                Have a groundbreaking project in mind or want to learn more about our strategic services?
-                                <strong className="theme-text-secondary font-medium"> We&apos;re here to help</strong> turn your vision into reality.
-                            </p>
-                        </div>
-                    </AnimatedSection>
-
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-                        {/* Contact Information */}
-                        <div className="lg:col-span-5 space-y-8">
-                            <AnimatedSection direction="right" delay={0.2}>
-                                <div className="relative rounded-[2rem] overflow-hidden shadow-2xl mb-10 group" style={{ backgroundColor: 'var(--bg-card)', border: '1px solid var(--border-secondary)' }}>
-                                    <div className="absolute inset-0 z-10" style={{ background: 'linear-gradient(to top, var(--bg-primary), transparent)' }} />
-                                    <div className="absolute inset-0 bg-primary-500/10 group-hover:bg-primary-500/0 transition-colors duration-700 z-10 mix-blend-overlay"></div>
-
-                                    <div className="w-full aspect-[4/3] relative">
-                                        <Image
-                                            src="/assets/Contact_customerSupport.jpg"
-                                            alt="Customer Support Team"
-                                            fill
-                                            className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000 ease-out"
-                                            onError={(e) => {
-                                                const target = e.target as HTMLImageElement;
-                                                target.style.display = 'none';
-                                                target.parentElement!.classList.add('bg-gradient-to-br', 'from-slate-800', 'to-slate-900');
-                                            }}
-                                        />
-                                    </div>
-                                    <div className="absolute bottom-8 left-8 right-8 z-20">
-                                        <div className="inline-flex items-center gap-2 px-3 py-1 glass rounded-full mb-3 border border-primary-500/30">
-                                            <span className="w-2 h-2 rounded-full bg-primary-400 animate-pulse"></span>
-                                            <span className="text-[10px] text-primary-300 font-bold uppercase tracking-widest">Global HQ</span>
-                                        </div>
-                                        <h3 className="text-white text-2xl font-bold mb-1 tracking-tight">Visit Our Office</h3>
-                                        <p className="text-slate-400 text-sm font-light">We&apos;d love to meet you in person to discuss your next big idea.</p>
-                                    </div>
-                                </div>
-                            </AnimatedSection>
-
-                            <AnimatedSection direction="right" delay={0.3}>
-                                <div className="space-y-5">
-                                    {[
-                                        { icon: FaPhone, title: "Call Us", desc: "Mon-Fri from 9am to 6pm", color: "primary", content: CONTACT_INFO.phones, isLink: true, hrefPrefix: "tel:" },
-                                        { icon: FaEnvelope, title: "Email Us", desc: "We'll reply within 24 hours", color: "secondary", content: CONTACT_INFO.emails, isLink: true, hrefPrefix: "mailto:" },
-                                        { icon: FaMapMarkerAlt, title: "Location", desc: "Come say hello at our HQ", color: "neon-purple", content: [CONTACT_INFO.address], isLink: false }
-                                    ].map((item, i) => (
-                                        <Card key={i} className="flex items-start gap-5 p-6 glass hover:shadow-lg transition-all duration-300 border-l-4 group" style={{ borderLeftColor: item.color === 'primary' ? '#0ea5e9' : item.color === 'secondary' ? '#8b5cf6' : '#d946ef' }}>
-                                            <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 shadow-inner group-hover:scale-110 transition-transform" style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-secondary)' }}>
-                                                <item.icon className={`text-xl ${item.color === 'primary' ? 'text-primary-400 drop-shadow-[0_0_8px_rgba(0,240,255,0.8)]' : item.color === 'secondary' ? 'text-secondary-400 drop-shadow-[0_0_8px_rgba(139,92,246,0.8)]' : 'text-fuchsia-400 drop-shadow-[0_0_8px_rgba(217,70,239,0.8)]'}`} />
-                                            </div>
-                                            <div>
-                                                <h3 className="text-lg font-bold theme-text mb-1 tracking-tight">{item.title}</h3>
-                                                <p className="theme-text-muted text-xs uppercase tracking-wider mb-3 font-semibold">{item.desc}</p>
-                                                <div className="space-y-1.5">
-                                                    {item.content.map((text, index) => (
-                                                        item.isLink ? (
-                                                            <a key={index} href={`${item.hrefPrefix}${text ? text.replace(/\s/g, '') : ''}`} className={`block theme-text-secondary font-medium ${item.color === 'primary' ? 'hover:text-primary-400' : 'hover:text-secondary-400'} transition-colors text-sm`}>
-                                                                {text}
-                                                            </a>
-                                                        ) : (
-                                                            <p key={index} className="theme-text-secondary font-medium leading-relaxed text-sm">
-                                                                {text}
-                                                            </p>
-                                                        )
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        </Card>
-                                    ))}
-                                </div>
-                            </AnimatedSection>
-                        </div>
-
-                        {/* Contact Form */}
-                        <div className="lg:col-span-7">
-                            <AnimatedSection direction="left" delay={0.4}>
-                                <Card className="p-8 md:p-12 glass-strong shadow-2xl relative overflow-hidden rounded-[2.5rem]" style={{ border: '1px solid var(--border-secondary)' }}>
-                                    {/* Form background glows */}
-                                    <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[100px] pointer-events-none" />
-                                    <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary-500/10 rounded-full blur-[100px] pointer-events-none" />
-
-                                    <div className="mb-10 relative z-10 pb-6" style={{ borderBottom: '1px solid var(--border-primary)' }}>
-                                        <h2 className="text-3xl font-bold theme-text mb-3 tracking-tight">Send us a Message</h2>
-                                        <p className="theme-text-muted font-light text-lg">Fill out the form below and our strategic team will be in touch shortly.</p>
-                                    </div>
-
-                                    <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                            <div className="group">
-                                                <label htmlFor="name" className="block text-sm font-semibold theme-text-secondary mb-2 ml-1 tracking-wide group-focus-within:text-primary-400 transition-colors">
-                                                    Full Name <span className="text-primary-500">*</span>
-                                                </label>
-                                                <input
-                                                    type="text"
-                                                    id="name"
-                                                    name="name"
-                                                    required
-                                                    placeholder="John Doe"
-                                                    value={formData.name}
-                                                    onChange={handleChange}
-                                                    className="w-full px-5 py-4 rounded-xl focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all shadow-inner"
-                                                    style={{ backgroundColor: 'var(--bg-input)', border: '1px solid var(--border-secondary)', color: 'var(--text-primary)' }}
-                                                />
-                                            </div>
-                                            <div className="group">
-                                                <label htmlFor="email" className="block text-sm font-semibold theme-text-secondary mb-2 ml-1 tracking-wide group-focus-within:text-primary-400 transition-colors">
-                                                    Email Address <span className="text-primary-500">*</span>
-                                                </label>
-                                                <input
-                                                    type="email"
-                                                    id="email"
-                                                    name="email"
-                                                    required
-                                                    placeholder="john@example.com"
-                                                    value={formData.email}
-                                                    onChange={handleChange}
-                                                    className="w-full px-5 py-4 rounded-xl focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all shadow-inner"
-                                                    style={{ backgroundColor: 'var(--bg-input)', border: '1px solid var(--border-secondary)', color: 'var(--text-primary)' }}
-                                                />
-                                            </div>
-                                        </div>
-
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                            <div className="group">
-                                                <label htmlFor="phone" className="block text-sm font-semibold theme-text-secondary mb-2 ml-1 tracking-wide group-focus-within:text-primary-400 transition-colors">
-                                                    Phone Number
-                                                </label>
-                                                <input
-                                                    type="tel"
-                                                    id="phone"
-                                                    name="phone"
-                                                    placeholder="+1 (555) 000-0000"
-                                                    value={formData.phone}
-                                                    onChange={handleChange}
-                                                    className="w-full px-5 py-4 rounded-xl focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all shadow-inner"
-                                                    style={{ backgroundColor: 'var(--bg-input)', border: '1px solid var(--border-secondary)', color: 'var(--text-primary)' }}
-                                                />
-                                            </div>
-                                            <div className="group">
-                                                <label htmlFor="subject" className="block text-sm font-semibold theme-text-secondary mb-2 ml-1 tracking-wide group-focus-within:text-primary-400 transition-colors">
-                                                    Subject <span className="text-primary-500">*</span>
-                                                </label>
-                                                <div className="relative">
-                                                    <select
-                                                        id="subject"
-                                                        name="subject"
-                                                        required
-                                                        value={formData.subject}
-                                                        onChange={handleChange}
-                                                        className="w-full px-5 py-4 rounded-xl focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all appearance-none shadow-inner cursor-pointer"
-                                                        style={{ backgroundColor: 'var(--bg-input)', border: '1px solid var(--border-secondary)', color: 'var(--text-primary)' }}
-                                                    >
-                                                        <option value="" disabled>Select a subject</option>
-                                                        <option value="General Inquiry">General Inquiry</option>
-                                                        <option value="Project Proposal">Project Proposal</option>
-                                                        <option value="Support">Support</option>
-                                                        <option value="Careers">Careers</option>
-                                                    </select>
-                                                    <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-primary-500 drop-shadow-[0_0_5px_rgba(0,240,255,0.5)]">
-                                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7"></path></svg>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div className="group">
-                                            <label htmlFor="message" className="block text-sm font-semibold theme-text-secondary mb-2 ml-1 tracking-wide group-focus-within:text-primary-400 transition-colors">
-                                                Message <span className="text-primary-500">*</span>
-                                            </label>
-                                            <textarea
-                                                id="message"
-                                                name="message"
-                                                required
-                                                rows={5}
-                                                placeholder="Tell us about your project or inquiry..."
-                                                value={formData.message}
-                                                onChange={handleChange}
-                                                className="w-full px-5 py-4 rounded-xl focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all resize-none shadow-inner"
-                                                style={{ backgroundColor: 'var(--bg-input)', border: '1px solid var(--border-secondary)', color: 'var(--text-primary)' }}
-                                            />
-                                        </div>
-
-                                        <div className="pt-4">
-                                            <Button type="submit" variant="neon" size="lg" icon={<FaPaperPlane className="text-xl" />} className="w-full py-5 text-xl font-bold rounded-xl tracking-wide">
-                                                Send Message
-                                            </Button>
-                                        </div>
-                                    </form>
-                                </Card>
-                            </AnimatedSection>
-                        </div>
+                    <div className="text-center max-w-3xl mx-auto">
+                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                            Get in Touch
+                        </h1>
+                        <p className="text-lg text-gray-600">
+                            Thank you for your interest. Please fill out the form below to inquire about our work in Digital.
+                        </p>
                     </div>
                 </Container>
             </div>
+
+            <Container className="py-16">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                    {/* Contact Form */}
+                    <div className="lg:col-span-2">
+                        <div className="bg-white rounded-xl border border-sky-100 p-8 shadow-sm">
+                            <h2 className="text-2xl font-semibold text-gray-900 mb-6">Send us a Message</h2>
+                            
+                            <form onSubmit={handleSubmit} className="space-y-6">
+                                <div>
+                                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                                        Name <span className="text-red-500">*</span>
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="name"
+                                        name="name"
+                                        required
+                                        value={formData.name}
+                                        onChange={handleChange}
+                                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all"
+                                        placeholder="Enter your name"
+                                    />
+                                </div>
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                                            Email <span className="text-red-500">*</span>
+                                        </label>
+                                        <input
+                                            type="email"
+                                            id="email"
+                                            name="email"
+                                            required
+                                            value={formData.email}
+                                            onChange={handleChange}
+                                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all"
+                                            placeholder="you@example.com"
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                                            Phone <span className="text-red-500">*</span>
+                                        </label>
+                                        <input
+                                            type="tel"
+                                            id="phone"
+                                            name="phone"
+                                            required
+                                            value={formData.phone}
+                                            onChange={handleChange}
+                                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all"
+                                            placeholder="+91 00000 00000"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label htmlFor="organization" className="block text-sm font-medium text-gray-700 mb-2">
+                                        Organization
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="organization"
+                                        name="organization"
+                                        value={formData.organization}
+                                        onChange={handleChange}
+                                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all"
+                                        placeholder="Your company name"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                                        Message <span className="text-red-500">*</span>
+                                    </label>
+                                    <textarea
+                                        id="message"
+                                        name="message"
+                                        required
+                                        rows={6}
+                                        value={formData.message}
+                                        onChange={handleChange}
+                                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all resize-none"
+                                        placeholder="Tell us about your project or inquiry..."
+                                    />
+                                </div>
+
+                                <Button type="submit" variant="primary" size="lg" className="w-full">
+                                    <FaPaperPlane className="mr-2" />
+                                    Send Message
+                                </Button>
+                            </form>
+                        </div>
+                    </div>
+
+                    {/* Contact Info Sidebar */}
+                    <div className="space-y-6">
+                        <div className="bg-sky-50 rounded-xl p-6 border border-sky-100">
+                            <div className="flex items-start gap-4">
+                                <div className="w-12 h-12 rounded-lg bg-sky-600 flex items-center justify-center flex-shrink-0">
+                                    <FaPhone className="text-white" size={20} />
+                                </div>
+                                <div>
+                                    <h3 className="font-semibold text-gray-900 mb-2">Call Us</h3>
+                                    <div className="space-y-1">
+                                        {CONTACT_INFO.phones.map((phone, idx) => (
+                                            <a key={idx} href={`tel:${phone.replace(/\s/g, '')}`} className="block text-sm text-gray-600 hover:text-sky-600 transition-colors">
+                                                {phone}
+                                            </a>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="bg-sky-50 rounded-xl p-6 border border-sky-100">
+                            <div className="flex items-start gap-4">
+                                <div className="w-12 h-12 rounded-lg bg-sky-600 flex items-center justify-center flex-shrink-0">
+                                    <FaEnvelope className="text-white" size={20} />
+                                </div>
+                                <div>
+                                    <h3 className="font-semibold text-gray-900 mb-2">Email Us</h3>
+                                    <div className="space-y-1">
+                                        {CONTACT_INFO.emails.map((email, idx) => (
+                                            <a key={idx} href={`mailto:${email}`} className="block text-sm text-gray-600 hover:text-sky-600 transition-colors">
+                                                {email}
+                                            </a>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="bg-gradient-to-br from-sky-600 to-sky-700 rounded-xl p-6 text-white">
+                            <h3 className="font-semibold mb-2">Business Hours</h3>
+                            <p className="text-sm text-sky-100">Monday - Friday: 9:00 AM - 6:00 PM</p>
+                            <p className="text-sm text-sky-100">Saturday: 9:00 AM - 1:00 PM</p>
+                            <p className="text-sm text-sky-100 mt-2">Sunday: Closed</p>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Office Locations */}
+                <div className="mt-20">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Office Locations</h2>
+                        <p className="text-lg text-gray-600">Visit us at any of our global offices</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {CONTACT_INFO.locations?.map((location, idx) => (
+                            <div key={idx} className="bg-white rounded-xl border border-sky-100 p-6 hover:shadow-lg transition-all">
+                                {location.type && (
+                                    <span className="inline-block px-3 py-1 bg-sky-100 text-sky-700 text-xs font-semibold rounded-full mb-3">
+                                        {location.type}
+                                    </span>
+                                )}
+                                <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                                    <FaMapMarkerAlt className="text-sky-600" />
+                                    {location.name}
+                                </h3>
+                                
+                                <div className="space-y-3">
+                                    <div>
+                                        <p className="text-sm font-medium text-gray-700 mb-1">Address:</p>
+                                        <p className="text-sm text-gray-600">{location.address}</p>
+                                    </div>
+
+                                    {location.phones && location.phones.length > 0 && (
+                                        <div>
+                                            <p className="text-sm font-medium text-gray-700 mb-1">Phone:</p>
+                                            {location.phones.map((phone, i) => (
+                                                <a key={i} href={`tel:${phone.replace(/\s/g, '')}`} className="block text-sm text-sky-600 hover:text-sky-700">
+                                                    {phone}
+                                                </a>
+                                            ))}
+                                        </div>
+                                    )}
+
+                                    {location.email && (
+                                        <div>
+                                            <p className="text-sm font-medium text-gray-700 mb-1">Email:</p>
+                                            <a href={`mailto:${location.email}`} className="text-sm text-sky-600 hover:text-sky-700">
+                                                {location.email}
+                                            </a>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </Container>
         </div>
     );
 }

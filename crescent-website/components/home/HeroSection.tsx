@@ -2,99 +2,82 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Button } from '../ui/Button';
 import { Container } from '../ui/Container';
-import { AnimatedSection } from '../ui/AnimatedSection';
-import { FaRocket, FaPlay } from 'react-icons/fa';
+import { FaRocket, FaArrowRight, FaCheckCircle } from 'react-icons/fa';
 
 export const HeroSection: React.FC = () => {
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 theme-bg">
-            {/* Cinematic Background */}
-            <div className="absolute inset-0 bg-mesh-dark opacity-100 z-0"></div>
-
-            {/* Ambient Animated Glows */}
-            <div className="absolute inset-0 z-0">
-                <div className="glow-orb-primary w-[40vw] h-[40vw] max-w-[800px] max-h-[800px] top-[-10%] left-[-10%] animate-float-slow opacity-60"></div>
-                <div className="glow-orb-secondary w-[40vw] h-[40vw] max-w-[800px] max-h-[800px] bottom-[-20%] right-[-10%] animate-float opacity-50" style={{ animationDelay: '2s' }}></div>
-                <div className="absolute top-[30%] left-[60%] w-[300px] h-[300px] bg-secondary-500/20 rounded-full blur-[100px] animate-pulse-neon"></div>
-            </div>
-
-            {/* Grid Overlay */}
-            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PHBhdGggZD0iTTAgMGg0MHY0MEgwVjB6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTAgMGg0MHYxSDBWMHptMCAzOWg0MHYxSDB2LTF6TTAgMmgxdjM4SDBWMnptMzkgMGgxdjM4aC0xVjJ6IiBmaWxsPSJyZ2JhKDEyOCwxMjgsMTI4LDAuMDUpIi8+PC9zdmc+')] opacity-50 z-0"></div>
-
+        <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20 bg-gradient-to-br from-sky-50 via-white to-blue-50">
             <Container className="relative z-10 w-full">
-                <div className="text-center space-y-8 mt-12">
-                    <AnimatedSection direction="up">
-                        <div className="inline-flex items-center gap-2 px-5 py-2 glass rounded-full mb-6 border border-primary-500/30 shadow-[0_0_20px_rgba(0,240,255,0.1)] hover:shadow-[0_0_30px_rgba(0,240,255,0.2)] hover:border-primary-400/50 transition-all cursor-default">
-                            <span className="relative flex h-3 w-3">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-cyan opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-3 w-3 bg-primary-400"></span>
-                            </span>
-                            <span className="text-sm text-primary-500 font-semibold tracking-wide uppercase">
-                                Leading Software Solutions Provider
-                            </span>
+                <div className="text-center space-y-6 md:space-y-8 py-12 md:py-16">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-sky-100 rounded-full border border-sky-200">
+                        <span className="relative flex h-2 w-2">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-600"></span>
+                        </span>
+                        <span className="text-sm text-sky-700 font-semibold">
+                            15+ Years of Excellence
+                        </span>
+                    </div>
+
+                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight text-gray-900">
+                        Innovative Software Solutions
+                        <br />
+                        <span className="text-sky-600">For Your Business</span>
+                    </h1>
+
+                    <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                        Empowering healthcare, education, and businesses with cutting-edge management solutions.
+                        Transform your operations with our comprehensive software suite.
+                    </p>
+
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                        <Link href="/demo">
+                            <button className="w-full sm:w-auto px-8 py-3.5 bg-sky-600 text-white font-semibold rounded-lg hover:bg-sky-700 hover:shadow-lg transition-all duration-200 active:scale-95 flex items-center justify-center gap-2">
+                                <FaRocket size={18} />
+                                <span>Get Free Demo</span>
+                            </button>
+                        </Link>
+                        <Link href="/contact">
+                            <button className="w-full sm:w-auto px-8 py-3.5 bg-white text-sky-600 font-semibold rounded-lg border-2 border-sky-200 hover:border-sky-400 hover:shadow-lg transition-all duration-200 active:scale-95 flex items-center justify-center gap-2">
+                                <span>Contact Sales</span>
+                                <FaArrowRight size={16} />
+                            </button>
+                        </Link>
+                    </div>
+
+                    {/* Stats */}
+                    <div className="pt-12 md:pt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                        {[
+                            { number: '60+', label: 'Happy Clients' },
+                            { number: '11+', label: 'Software Solutions' },
+                            { number: '24/7', label: 'Support' },
+                            { number: '15+', label: 'Years Experience' }
+                        ].map((stat, i) => (
+                            <div key={i} className="text-center p-4 md:p-6 bg-white rounded-xl border border-sky-100 hover:border-sky-300 hover:shadow-md transition-all">
+                                <div className="text-3xl md:text-4xl font-bold text-sky-600 mb-1">{stat.number}</div>
+                                <div className="text-gray-600 text-sm font-medium">{stat.label}</div>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Trust Indicators */}
+                    <div className="pt-8 flex flex-wrap items-center justify-center gap-4 text-sm text-gray-600">
+                        <div className="flex items-center gap-2">
+                            <FaCheckCircle className="text-green-500" />
+                            <span>ISO Certified</span>
                         </div>
-                    </AnimatedSection>
-
-                    <AnimatedSection direction="up" delay={0.1}>
-                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-[1.1] tracking-tighter">
-                            <span className="theme-text">Innovative Software</span>
-                            <br />
-                            <span className="gradient-text">For Your Business</span>
-                        </h1>
-                    </AnimatedSection>
-
-                    <AnimatedSection direction="up" delay={0.2}>
-                        <p className="text-xl md:text-2xl theme-text-muted max-w-3xl mx-auto font-light leading-relaxed">
-                            Empowering healthcare, education, and businesses with cutting-edge management solutions.
-                            <strong className="theme-text-secondary font-medium"> Transform your operations</strong> with our comprehensive software suite.
-                        </p>
-                    </AnimatedSection>
-
-                    <AnimatedSection direction="up" delay={0.3}>
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-12">
-                            <Link href="/demo" className="w-full sm:w-auto">
-                                <Button variant="neon" size="lg" icon={<FaRocket />} className="w-full text-lg py-4 px-10">
-                                    Get Free Demo
-                                </Button>
-                            </Link>
-                            <Link href="/contact" className="w-full sm:w-auto">
-                                <Button variant="outline" size="lg" icon={<FaPlay />} className="w-full text-lg py-4 px-10">
-                                    Watch Video
-                                </Button>
-                            </Link>
+                        <div className="flex items-center gap-2">
+                            <FaCheckCircle className="text-green-500" />
+                            <span>Secure & Reliable</span>
                         </div>
-                    </AnimatedSection>
-
-                    <AnimatedSection direction="up" delay={0.4}>
-                        <div className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-                            {[
-                                { number: '500+', label: 'Happy Clients' },
-                                { number: '11+', label: 'Software Solutions' },
-                                { number: '24/7', label: 'Support' },
-                                { number: '99.9%', label: 'Uptime' }
-                            ].map((stat, i) => (
-                                <div key={i} className="text-center p-6 rounded-2xl glass hover:border-primary-500/30 transition-colors group" style={{ border: '1px solid var(--border-primary)' }}>
-                                    <div className="text-4xl md:text-5xl font-black mb-2 group-hover:text-primary-400 transition-colors theme-text">{stat.number}</div>
-                                    <div className="text-primary-500/80 text-sm font-semibold tracking-wider uppercase">{stat.label}</div>
-                                </div>
-                            ))}
+                        <div className="flex items-center gap-2">
+                            <FaCheckCircle className="text-green-500" />
+                            <span>24/7 Support</span>
                         </div>
-                    </AnimatedSection>
+                    </div>
                 </div>
             </Container>
-
-            {/* Futuristic Scroll Indicator */}
-            <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center opacity-70 hover:opacity-100 transition-opacity cursor-pointer">
-                <span className="text-xs theme-text-muted uppercase tracking-widest mb-3 font-semibold">Scroll</span>
-                <div className="w-6 h-10 border-2 rounded-full flex items-start justify-center p-1 transition-colors" style={{ borderColor: 'var(--border-secondary)' }}>
-                    <div className="w-1.5 h-3 bg-primary-400 rounded-full animate-bounce shadow-[0_0_8px_rgba(0,240,255,0.8)]"></div>
-                </div>
-            </div>
-
-            {/* Bottom Gradient Fade */}
-            <div className="absolute bottom-0 left-0 right-0 h-32 z-0 pointer-events-none" style={{ background: 'linear-gradient(to top, var(--bg-primary), transparent)' }}></div>
         </section>
     );
 };

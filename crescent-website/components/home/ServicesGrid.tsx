@@ -2,82 +2,63 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Card } from '../ui/Card';
 import { Container } from '../ui/Container';
-import { AnimatedSection } from '../ui/AnimatedSection';
 import { SERVICES } from '@/lib/constants';
 import { FaArrowRight } from 'react-icons/fa';
 
 export const ServicesGrid: React.FC = () => {
     return (
-        <section className="py-24 theme-bg relative overflow-hidden">
-            {/* Ambient Background Elements */}
-            <div className="absolute top-0 right-1/4 w-96 h-96 bg-primary-500/5 rounded-full blur-[100px] pointer-events-none"></div>
-            <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-secondary-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+        <section className="py-16 md:py-20 bg-white">
+            <Container>
+                <div className="text-center mb-12">
+                    <span className="text-sky-600 font-semibold tracking-wider uppercase text-sm mb-2 block">Our Expertise</span>
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-gray-900">
+                        Comprehensive <span className="text-sky-600">Services</span>
+                    </h2>
+                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                        Cutting-edge software solutions tailored to elevate your business operations
+                    </p>
+                </div>
 
-            <Container className="relative z-10">
-                <AnimatedSection direction="up">
-                    <div className="text-center mb-20">
-                        <span className="text-primary-400 font-semibold tracking-wider uppercase text-sm mb-4 block">Our Expertise</span>
-                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6">
-                            <span className="theme-text">Comprehensive </span>
-                            <span className="gradient-text drop-shadow-[0_0_15px_rgba(0,240,255,0.3)]">Services</span>
-                        </h2>
-                        <p className="text-xl theme-text-muted max-w-2xl mx-auto font-light leading-relaxed">
-                            Cutting-edge software solutions meticulously tailored to elevate your business operations and drive growth.
-                        </p>
-                    </div>
-                </AnimatedSection>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {SERVICES.map((service, index) => {
                         const Icon = service.icon;
-                        const isEven = index % 2 === 0;
-                        const iconGradient = isEven
-                            ? 'from-primary-500 to-sky-500 shadow-[0_0_20px_rgba(0,240,255,0.2)]'
-                            : 'from-secondary-500 to-purple-500 shadow-[0_0_20px_rgba(176,38,255,0.2)]';
-                        const hoverColor = isEven ? 'group-hover:text-primary-400' : 'group-hover:text-secondary-400';
-                        const dotColor = isEven ? 'bg-primary-500 shadow-[0_0_8px_rgba(0,240,255,0.6)]' : 'bg-secondary-500 shadow-[0_0_8px_rgba(176,38,255,0.6)]';
 
                         return (
-                            <AnimatedSection key={service.id} direction="up" delay={index * 0.1}>
-                                <Link href={service.href} className="block h-full">
-                                    <Card className="h-full group backdrop-blur-md" style={{ backgroundColor: 'var(--bg-card)', border: '1px solid var(--border-primary)' }}>
-                                        <div className="flex flex-col h-full relative z-10">
-                                            <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-primary-500/20 to-transparent transition-colors duration-500"></div>
-
-                                            <div className={`w-14 h-14 bg-gradient-to-br ${iconGradient} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:-translate-y-1 transition-all duration-300 relative`}>
-                                                <div className="absolute inset-0 rounded-xl bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity blur-sm"></div>
-                                                <Icon className="text-white text-2xl relative z-10 drop-shadow-md" />
-                                            </div>
-
-                                            <h3 className={`text-2xl font-bold theme-text mb-4 tracking-tight ${hoverColor} transition-colors duration-300`}>
-                                                {service.title}
-                                            </h3>
-
-                                            <p className="theme-text-muted text-sm mb-6 flex-grow leading-relaxed font-light">
-                                                {service.description}
-                                            </p>
-
-                                            {service.features && (
-                                                <ul className="space-y-3 mb-8">
-                                                    {service.features.slice(0, 3).map((feature, idx) => (
-                                                        <li key={idx} className="text-sm theme-text-secondary flex items-center font-light">
-                                                            <span className={`w-1.5 h-1.5 rounded-full mr-3 ${dotColor}`}></span>
-                                                            {feature}
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            )}
-
-                                            <div className={`flex items-center text-sm font-semibold tracking-wide ${isEven ? 'text-primary-400' : 'text-secondary-400'} group-hover:gap-3 transition-all mt-auto pt-4`} style={{ borderTop: '1px solid var(--border-primary)' }}>
-                                                <span>Explore Solution</span>
-                                                <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-                                            </div>
+                            <Link key={service.id} href={service.href} className="block h-full group">
+                                <div className="h-full bg-white rounded-xl border-2 border-sky-100 hover:border-sky-300 p-6 hover:shadow-xl transition-all duration-300">
+                                    <div className="flex flex-col h-full">
+                                        {/* Icon - solid color without gradient */}
+                                        <div className="w-14 h-14 bg-sky-600 rounded-xl flex items-center justify-center mb-5 group-hover:scale-105 transition-transform">
+                                            <Icon className="text-white text-2xl" />
                                         </div>
-                                    </Card>
-                                </Link>
-                            </AnimatedSection>
+
+                                        <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-sky-600 transition-colors">
+                                            {service.title}
+                                        </h3>
+
+                                        <p className="text-gray-600 text-sm mb-5 flex-grow leading-relaxed">
+                                            {service.description}
+                                        </p>
+
+                                        {service.features && (
+                                            <ul className="space-y-2 mb-5">
+                                                {service.features.slice(0, 3).map((feature, idx) => (
+                                                    <li key={idx} className="text-sm text-gray-700 flex items-start">
+                                                        <span className="w-1.5 h-1.5 rounded-full bg-sky-500 mr-3 mt-1.5 flex-shrink-0"></span>
+                                                        <span>{feature}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        )}
+
+                                        <div className="flex items-center text-sm font-semibold text-sky-600 group-hover:gap-2 transition-all mt-auto pt-4 border-t border-sky-100">
+                                            <span>Explore Solution</span>
+                                            <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </Link>
                         );
                     })}
                 </div>
