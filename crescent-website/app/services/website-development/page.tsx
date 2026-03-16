@@ -1,5 +1,6 @@
 import { Container } from "@/components/ui/Container";
 import Link from "next/link";
+import Image from "next/image";
 import { FaLaptopCode, FaShoppingCart, FaCogs, FaWordpress, FaMobileAlt, FaTools, FaCheckCircle, FaArrowRight, FaPhone, FaCode, FaDatabase, FaServer, FaPalette } from "react-icons/fa";
 import { SERVICES } from "@/lib/constants";
 
@@ -97,27 +98,40 @@ export default function WebsiteDevPage() {
             {/* Hero Section */}
             <div className="bg-gradient-to-br from-sky-50 via-white to-blue-50 pt-24 md:pt-32 pb-16">
                 <Container>
-                    <div className="text-center max-w-4xl mx-auto">
-                        <div className="w-20 h-20 bg-sky-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
-                            <Icon className="text-white text-4xl" />
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div className="text-left max-w-2xl">
+                            <div className="w-16 h-16 bg-sky-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                                <Icon className="text-white text-3xl" />
+                            </div>
+                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900">
+                                {service.title}
+                            </h1>
+                            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+                                Professional Website Development Services - Custom websites, e-commerce platforms, and web applications built with cutting-edge technologies
+                            </p>
+                            <div className="flex flex-col sm:flex-row items-center gap-4">
+                                <Link href="/contact">
+                                    <button className="px-8 py-4 bg-sky-600 text-white font-semibold rounded-lg hover:bg-sky-700 shadow-lg hover:shadow-xl transition-all w-full sm:w-auto text-center">
+                                        Get a Quote
+                                    </button>
+                                </Link>
+                                <Link href="/contact">
+                                    <button className="px-8 py-4 bg-white text-sky-600 font-semibold rounded-lg border-2 border-sky-600 hover:bg-sky-50 transition-all w-full sm:w-auto text-center">
+                                        View Portfolio
+                                    </button>
+                                </Link>
+                            </div>
                         </div>
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900">
-                            {service.title}
-                        </h1>
-                        <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                            Professional Website Development Services - Custom websites, e-commerce platforms, and web applications built with cutting-edge technologies
-                        </p>
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                            <Link href="/contact">
-                                <button className="px-8 py-4 bg-sky-600 text-white font-semibold rounded-lg hover:bg-sky-700 shadow-lg hover:shadow-xl transition-all">
-                                    Get a Quote
-                                </button>
-                            </Link>
-                            <Link href="/contact">
-                                <button className="px-8 py-4 bg-white text-sky-600 font-semibold rounded-lg border-2 border-sky-600 hover:bg-sky-50 transition-all">
-                                    View Portfolio
-                                </button>
-                            </Link>
+                        <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl group">
+                            <Image 
+                                src="/Assets/web-development.avif"
+                                alt="Website Development"
+                                fill
+                                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                                priority
+                            />
+                            {/* Overlay Gradient for better integration */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 via-transparent to-transparent"></div>
                         </div>
                     </div>
                 </Container>

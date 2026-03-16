@@ -1,5 +1,6 @@
 import { Container } from "@/components/ui/Container";
 import Link from "next/link";
+import Image from "next/image";
 import { FaUserMd, FaFileMedical, FaPrescription, FaHistory, FaFlask, FaCalendarCheck, FaBell, FaClipboardList, FaCheckCircle, FaArrowRight, FaPhone } from "react-icons/fa";
 import { SERVICES } from "@/lib/constants";
 
@@ -75,8 +76,19 @@ export default function ClinicPage() {
     return (
         <div className="min-h-screen bg-white">
             {/* Hero Section */}
-            <div className="bg-gradient-to-br from-sky-50 via-white to-blue-50 pt-24 md:pt-32 pb-16">
-                <Container>
+            <div className="relative bg-gradient-to-br from-sky-50 via-white to-blue-50 pt-24 md:pt-32 pb-16 overflow-hidden">
+                <div className="absolute inset-0 z-0">
+                    <Image
+                        src="/Assets/clinic.avif"
+                        alt="Clinic Management Software"
+                        fill
+                        className="object-cover opacity-30"
+                        priority
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-white/60"></div>
+                </div>
+                
+                <Container className="relative z-10">
                     <div className="text-center max-w-4xl mx-auto">
                         <div className="w-20 h-20 bg-sky-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
                             <Icon className="text-white text-4xl" />
@@ -84,7 +96,7 @@ export default function ClinicPage() {
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900">
                             {service.title}
                         </h1>
-                        <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+                        <p className="text-xl text-gray-600 mb-8 leading-relaxed font-medium">
                             Complete digital solution for modern clinic management - from patient registration to follow-ups
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

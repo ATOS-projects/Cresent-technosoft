@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import WhatsAppButton from "@/components/ui/WhatsAppButton";
+import CallButton from "@/components/ui/CallButton";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,13 +28,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body className={inter.className}>
         <Header />
         <main className="min-h-screen">
           {children}
         </main>
         <Footer />
+        <WhatsAppButton />
+        <CallButton />
       </body>
     </html>
   );

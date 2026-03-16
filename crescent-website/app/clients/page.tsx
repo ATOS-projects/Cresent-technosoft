@@ -136,15 +136,40 @@ export default function ClientsPage() {
     return (
         <div className="min-h-screen bg-white">
             {/* Hero Section */}
-            <div className="bg-gradient-to-br from-sky-50 to-white pt-24 md:pt-32 pb-12 md:pb-16">
+            <div className="bg-gradient-to-br from-sky-50 via-white to-blue-50 pt-24 md:pt-32 pb-16 overflow-hidden">
                 <Container>
-                    <div className="text-center max-w-3xl mx-auto px-4">
-                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-                            Our Valued Clients
-                        </h1>
-                        <p className="text-base md:text-lg text-gray-600">
-                            Trusted by {totalClients}+ organizations across healthcare, education, and business sectors worldwide
-                        </p>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div className="text-left space-y-6 max-w-2xl">
+                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+                                Our Valued <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-blue-600">Clients</span>
+                            </h1>
+                            <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
+                                Trusted by {totalClients}+ organizations across healthcare, education, and business sectors worldwide. We build long-term partnerships that drive mutual growth.
+                            </p>
+                        </div>
+
+                        {/* Staggered masonry layout for hero images */}
+                        <div className="relative w-full h-[400px] md:h-[500px]">
+                            <div className="absolute top-0 right-0 w-3/4 h-[70%] rounded-2xl overflow-hidden shadow-2xl z-10 hover:z-30 transition-all duration-500 hover:scale-105 border-4 border-white">
+                                <Image
+                                    src="/Assets/clients.jpg"
+                                    alt="Our Clients"
+                                    fill
+                                    className="object-cover"
+                                    priority
+                                />
+                            </div>
+                            <div className="absolute bottom-0 left-0 w-2/3 h-[60%] rounded-2xl overflow-hidden shadow-2xl z-20 hover:z-30 transition-all duration-500 hover:scale-105 border-4 border-white">
+                                <Image
+                                    src="/Assets/clients shaking hands.jpg"
+                                    alt="Client Partnership"
+                                    fill
+                                    className="object-cover"
+                                />
+                            </div>
+                            <div className="absolute top-10 left-10 w-32 h-32 bg-blue-100 rounded-full mix-blend-multiply filter blur-2xl opacity-70"></div>
+                            <div className="absolute bottom-10 right-10 w-32 h-32 bg-sky-200 rounded-full mix-blend-multiply filter blur-2xl opacity-70"></div>
+                        </div>
                     </div>
                 </Container>
             </div>

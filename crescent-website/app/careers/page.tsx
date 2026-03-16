@@ -1,5 +1,6 @@
 import { Container } from "@/components/ui/Container";
 import Link from "next/link";
+import Image from "next/image";
 import { FaBriefcase, FaCode, FaUsers, FaRocket, FaHeart, FaGraduationCap, FaChartLine, FaMapMarkerAlt, FaClock, FaArrowRight, FaLaptop } from "react-icons/fa";
 
 export default function CareersPage() {
@@ -83,30 +84,44 @@ export default function CareersPage() {
             {/* Hero Section */}
             <div className="bg-gradient-to-br from-sky-50 via-white to-sky-50/30 pt-24 md:pt-32 pb-16">
                 <Container>
-                    <div className="text-center max-w-4xl mx-auto">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-sky-100 rounded-full mb-6">
-                            <FaBriefcase className="text-sky-600" />
-                            <span className="text-sm font-semibold text-sky-700">We're Hiring!</span>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div className="text-left space-y-6 max-w-2xl">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-sky-100 rounded-full">
+                                <FaBriefcase className="text-sky-600" />
+                                <span className="text-sm font-semibold text-sky-700">We're Hiring!</span>
+                            </div>
+                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+                                Join Our <span className="text-sky-600">Growing Team</span>
+                            </h1>
+                            <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
+                                Be part of a dynamic team building innovative software solutions that make a real difference 
+                                in healthcare, education, and business management. With 15+ years of excellence, we're looking for passionate individuals to grow with us.
+                            </p>
+                            <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
+                                <a href="#openings" className="w-full sm:w-auto">
+                                    <button className="w-full sm:w-auto px-8 py-3.5 bg-sky-600 text-white font-semibold rounded-lg hover:bg-sky-700 hover:shadow-lg transition-all duration-200 active:scale-95 flex items-center justify-center gap-2">
+                                        <span>View Open Positions</span>
+                                        <FaArrowRight size={14} />
+                                    </button>
+                                </a>
+                                <a href="#internship" className="w-full sm:w-auto">
+                                    <button className="w-full sm:w-auto px-8 py-3.5 bg-white text-sky-600 font-semibold rounded-lg border-2 border-sky-200 hover:border-sky-400 hover:shadow-lg transition-all duration-200 active:scale-95">
+                                        Internship Program
+                                    </button>
+                                </a>
+                            </div>
                         </div>
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-                            Join Our <span className="text-sky-600">Growing Team</span>
-                        </h1>
-                        <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
-                            Be part of a dynamic team building innovative software solutions that make a real difference 
-                            in healthcare, education, and business management. With 15+ years of excellence, we're looking for passionate individuals to grow with us.
-                        </p>
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                            <a href="#openings">
-                                <button className="w-full sm:w-auto px-8 py-3.5 bg-sky-600 text-white font-semibold rounded-lg hover:bg-sky-700 hover:shadow-lg transition-all duration-200 active:scale-95 flex items-center justify-center gap-2">
-                                    <span>View Open Positions</span>
-                                    <FaArrowRight size={14} />
-                                </button>
-                            </a>
-                            <a href="#internship">
-                                <button className="w-full sm:w-auto px-8 py-3.5 bg-white text-sky-600 font-semibold rounded-lg border-2 border-sky-200 hover:border-sky-400 hover:shadow-lg transition-all duration-200 active:scale-95">
-                                    Internship Program
-                                </button>
-                            </a>
+                        
+                        {/* Right side - Image */}
+                        <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl group">
+                            <Image 
+                                src="/Assets/careers.jpg"
+                                alt="Careers at Crescent"
+                                fill
+                                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                                priority
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 via-transparent to-transparent"></div>
                         </div>
                     </div>
                 </Container>

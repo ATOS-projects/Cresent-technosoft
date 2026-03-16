@@ -1,5 +1,6 @@
 import { Container } from "@/components/ui/Container";
 import Link from "next/link";
+import Image from "next/image";
 import { FaHospital, FaUserInjured, FaBed, FaProcedures, FaAmbulance, FaFlask, FaPills, FaMoneyBillWave, FaUsers, FaChartLine, FaCalendarAlt, FaFileInvoice, FaCheckCircle, FaArrowRight, FaPhone } from "react-icons/fa";
 import { SERVICES } from "@/lib/constants";
 
@@ -107,16 +108,28 @@ export default function HospitalPage() {
     return (
         <div className="min-h-screen bg-white">
             {/* Hero Section */}
-            <div className="bg-gradient-to-br from-blue-50 via-white to-sky-50 pt-24 md:pt-32 pb-16">
-                <Container>
+            <div className="relative bg-gradient-to-br from-blue-50 via-white to-blue-100 pt-24 md:pt-32 pb-16 overflow-hidden">
+                {/* Background Image with Overlay */}
+                <div className="absolute inset-0 z-0">
+                    <Image
+                        src="/Assets/hospital tech.jpg"
+                        alt="Hospital Management Software"
+                        fill
+                        className="object-cover opacity-30"
+                        priority
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/90"></div>
+                </div>
+
+                <Container className="relative z-10">
                     <div className="text-center max-w-4xl mx-auto">
                         <div className="w-20 h-20 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
                             <Icon className="text-white text-4xl" />
                         </div>
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900">
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 drop-shadow-sm">
                             {service.title}
                         </h1>
-                        <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+                        <p className="text-xl text-gray-700 mb-8 leading-relaxed font-medium">
                             Complete end-to-end hospital management solution for multi-specialty hospitals, nursing homes, and healthcare chains
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
