@@ -177,7 +177,7 @@ export const NAV_LINKS: NavLink[] = [
     { label: 'Careers', href: '/careers' },
     { label: 'Partner Program', href: '/partner-program' },
     { label: 'Contact Us', href: '/contact' },
-    { label: 'Blog', href: '/blog' }
+    { label: 'Blogs', href: '/blogs' }
 ];
 
 export interface Testimonial {
