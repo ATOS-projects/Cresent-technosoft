@@ -37,6 +37,17 @@ export default function RootLayout({
         <Footer />
         <WhatsAppButton />
         <CallButton />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/Cresent-technosoft/sw.js').catch(err => {
+                  console.log('Service Worker registration failed:', err);
+                });
+              }
+            `,
+          }}
+        />
       </body>
     </html>
   );
