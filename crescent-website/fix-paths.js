@@ -7,8 +7,9 @@ const outDir = path.join(__dirname, 'out');
 function fixPaths(filePath) {
   let content = fs.readFileSync(filePath, 'utf8');
   
-  // Fix image paths
+  // Fix image and asset paths
   content = content.replace(/src="\/Assets/g, 'src="/Cresent-technosoft/Assets');
+  content = content.replace(/href="\/Assets/g, 'href="/Cresent-technosoft/Assets');
   
   // Fix _next paths
   content = content.replace(/href="\/_next/g, 'href="/Cresent-technosoft/_next');
