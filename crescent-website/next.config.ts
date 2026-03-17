@@ -1,12 +1,13 @@
 import type { NextConfig } from "next";
 
+const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig: NextConfig = {
   output: 'export',
-  basePath: '/Cresent-technosoft',
-  assetPrefix: '/Cresent-technosoft',
+  // Apply basePath only when building for production
+  basePath: isProd ? '/Cresent-technosoft' : '',
+  assetPrefix: isProd ? '/Cresent-technosoft' : '',
   images: {
-    loader: 'custom',
-    loaderFile: './image-loader.ts',
     unoptimized: true,
   }
 };
