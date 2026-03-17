@@ -20,9 +20,6 @@ export const metadata: Metadata = {
     shortcut: "/Assets/logo.webp",
     apple: "/Assets/logo.webp",
   },
-  other: {
-    'Cache-Control': 'no-cache, no-store, must-revalidate, max-age=0',
-  },
 };
 
 export default function RootLayout({

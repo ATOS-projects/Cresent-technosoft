@@ -4,8 +4,7 @@ const path = require('path');
 
 const outDir = path.join(__dirname, 'out');
 let filesFixed = 0;
-
-const noCacheMetaTag = '<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0">';
+const timestamp = Date.now(); // Cache buster
 
 function fixPaths(filePath) {
   try {
@@ -16,14 +15,14 @@ function fixPaths(filePath) {
     content = content.replace(/src="\/Assets/g, 'src="/Cresent-technosoft/Assets');
     content = content.replace(/href="\/Assets/g, 'href="/Cresent-technosoft/Assets');
     
-    // Fix _next paths
-    content = content.replace(/href="\/_next/g, 'href="/Cresent-technosoft/_next');
-    content = content.replace(/src="\/_next/g, 'src="/Cresent-technosoft/_next');
+    // Fix _next paths with cache-busting query parameter
+    content = content.replace(/href="\/_next\/([^"]*)/g, `href="/Cresent-technosoft/_next/$1?v=${timestamp}`);
+    content = content.replace(/src="\/_next\/([^"]*)/g, `src="/Cresent-technosoft/_next/$1?v=${timestamp}`);
     
-    // Inject cache-control meta tags if not already present
-    if (!content.includes('http-equiv="Cache-Control"')) {
-      content = content.replace(/<head[^>]*>/, `$&\n${noCacheMetaTag}`);
-    }
+    // Remove old meta tags if present (they don't work anyway)
+    content = content.replace(/<meta http-equiv="Cache-Control"[^>]*>/g, '');
+    content = content.replace(/<meta http-equiv="Pragma"[^>]*>/g, '');
+    content = content.replace(/<meta http-equiv="Expires"[^>]*>/g, '');
     
     // Only write if content changed
     if (content.length !== originalLength) {
@@ -57,6 +56,17 @@ function walkDir(dir) {
     console.error(`Error reading directory ${dir}:`, err.message);
     process.exit(1);
   }
+}
+
+console.log(`Starting path fixing with cache buster (v=${timestamp})...`);
+
+if (fs.existsSync(outDir)) {
+  walkDir(outDir);
+  console.log(`\n✓ SUCCESS: Fixed paths in ${filesFixed} HTML files with cache-busting!`);
+  process.exit(0);
+} else {
+  console.error(`✗ FAILED: out directory not found at ${outDir}`);
+  process.exit(1);
 }
 
 console.log(`Starting path fixing... (out dir: ${outDir})`);
