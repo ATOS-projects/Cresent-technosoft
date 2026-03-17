@@ -5,6 +5,8 @@ const nextConfig: NextConfig = {
   basePath: '/Cresent-technosoft',
   assetPrefix: '/Cresent-technosoft',
   images: {
+    loader: 'custom',
+    loaderFile: './image-loader.ts',
     unoptimized: true,
   }
 };
