@@ -7,9 +7,6 @@ const nextConfig: NextConfig = {
   // Apply basePath only when building for production
   basePath: isProd ? '/Cresent-technosoft' : '',
   assetPrefix: isProd ? '/Cresent-technosoft' : '',
-  images: {
-    unoptimized: true,
-  }
 };
 
 export default nextConfig;
