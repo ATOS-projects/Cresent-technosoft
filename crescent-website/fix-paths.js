@@ -5,6 +5,8 @@ const path = require('path');
 const outDir = path.join(__dirname, 'out');
 let filesFixed = 0;
 
+const noCacheMetaTag = '<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0">';
+
 function fixPaths(filePath) {
   try {
     let content = fs.readFileSync(filePath, 'utf8');
@@ -17,6 +19,11 @@ function fixPaths(filePath) {
     // Fix _next paths
     content = content.replace(/href="\/_next/g, 'href="/Cresent-technosoft/_next');
     content = content.replace(/src="\/_next/g, 'src="/Cresent-technosoft/_next');
+    
+    // Inject cache-control meta tags if not already present
+    if (!content.includes('http-equiv="Cache-Control"')) {
+      content = content.replace(/<head[^>]*>/, `$&\n${noCacheMetaTag}`);
+    }
     
     // Only write if content changed
     if (content.length !== originalLength) {
