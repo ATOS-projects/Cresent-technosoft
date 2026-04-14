@@ -134,110 +134,127 @@ export default function ClientsPage() {
     const totalClients = clientsByLocation.reduce((sum, loc) => sum + loc.count, 0);
 
     return (
-        <div className="min-h-screen bg-white">
-            {/* Hero Section */}
-            <div className="bg-gradient-to-br from-sky-50 via-white to-blue-50 pt-24 md:pt-32 pb-16 overflow-hidden">
-                <Container>
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <div className="text-left space-y-6 max-w-2xl">
-                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                                Our Valued <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-blue-600">Clients</span>
-                            </h1>
-                            <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
-                                Trusted by {totalClients}+ organizations across healthcare, education, and business sectors worldwide. We build long-term partnerships that drive mutual growth.
-                            </p>
+        <div className="min-h-screen bg-slate-50">
+            {/* Hero Section - Split Slide Design */}
+            <div className="relative bg-white border-b border-gray-200 overflow-hidden flex flex-col lg:flex-row mt-[76px] lg:mt-[88px]">
+                
+                {/* Left Side: Content aligned to container grid securely */}
+                <div className="w-full lg:w-1/2 flex items-center py-12 lg:py-20 px-6 md:px-12 lg:px-16 xl:px-24 z-10 bg-white">
+                    <div className="max-w-2xl w-full mx-auto lg:mx-0 lg:ml-auto">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 border border-gray-200 rounded-sm mb-8">
+                            <FaMapMarkerAlt className="text-blue-900" />
+                            <span className="text-sm font-extrabold tracking-wide text-blue-950 uppercase">Our Global Network</span>
                         </div>
-
-                        {/* Staggered masonry layout for hero images */}
-                        <div className="relative w-full h-[400px] md:h-[500px]">
-                            <div className="absolute top-0 right-0 w-3/4 h-[70%] rounded-2xl overflow-hidden shadow-2xl z-10 hover:z-30 transition-all duration-500 hover:scale-105 border-4 border-white">
-                                <Image
-                                    src="/Assets/clients.jpg"
-                                    alt="Our Clients"
-                                    fill
-                                    className="object-cover"
-                                    priority
-                                />
-                            </div>
-                            <div className="absolute bottom-0 left-0 w-2/3 h-[60%] rounded-2xl overflow-hidden shadow-2xl z-20 hover:z-30 transition-all duration-500 hover:scale-105 border-4 border-white">
-                                <Image
-                                    src="/Assets/clients shaking hands.jpg"
-                                    alt="Client Partnership"
-                                    fill
-                                    className="object-cover"
-                                />
-                            </div>
-                            <div className="absolute top-10 left-10 w-32 h-32 bg-blue-100 rounded-full mix-blend-multiply filter blur-2xl opacity-70"></div>
-                            <div className="absolute bottom-10 right-10 w-32 h-32 bg-sky-200 rounded-full mix-blend-multiply filter blur-2xl opacity-70"></div>
+                        <h1 className="text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-extrabold text-blue-950 mb-6 tracking-tight leading-[1.1]">
+                            Trusted <br className="hidden md:block"/> Partnerships <br className="hidden lg:block"/> Worldwide
+                        </h1>
+                        <p className="text-lg md:text-xl text-gray-600 leading-relaxed font-medium mb-12 max-w-xl">
+                            Join over {totalClients}+ organizations across healthcare, education, and enterprise sectors 
+                            who rely on Crescent Technosoft for robust software solutions.
+                        </p>
+                        
+                        {/* Slide UI Navigation Element */}
+                        <div className="flex items-center gap-3 mt-auto">
+                            <div className="w-12 h-1 bg-blue-900 rounded-sm shadow-sm"></div>
+                            <div className="w-6 h-1 bg-gray-200 rounded-sm"></div>
+                            <div className="w-6 h-1 bg-gray-200 rounded-sm"></div>
                         </div>
                     </div>
-                </Container>
+                </div>
+
+                {/* Right Side: Full Bleed Image */}
+                <div className="w-full lg:w-1/2 min-h-[400px] md:min-h-[500px] lg:min-h-full relative overflow-hidden group border-t-4 lg:border-t-0 lg:border-l-8 border-white bg-slate-200 flex-grow">
+                    <Image
+                        src="/Assets/clients shaking hands.jpg"
+                        alt="Client Partnership"
+                        fill
+                        className="object-cover transition-transform duration-[2000ms] group-hover:scale-105"
+                        priority
+                    />
+                    {/* Hover Tint */}
+                    <div className="absolute inset-0 bg-blue-950/10 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
+                </div>
             </div>
 
             {/* Featured Client Logos */}
-            <Container className="py-12 md:py-16">
-                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 md:mb-8 text-center">
-                    Featured Clients
-                </h2>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 md:gap-8 mb-12">
+            <Container className="py-16 md:py-24">
+                <div className="text-center mb-12">
+                    <h2 className="text-3xl md:text-4xl font-extrabold text-blue-950 mb-4 tracking-tight">
+                        Featured Clients
+                    </h2>
+                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                        Leading institutions that have transformed their operations with our technology.
+                    </p>
+                </div>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 md:gap-8 mb-20 md:mb-24">
                     {featuredClients.map((client, idx) => (
                         <div 
                             key={idx} 
-                            className="h-28 md:h-32 flex items-center justify-center p-4 md:p-6 bg-white rounded-xl border-2 border-gray-100 hover:border-sky-400 hover:shadow-xl transition-all duration-300"
+                            className="bg-white rounded-sm border border-gray-200 p-8 flex items-center justify-center h-32 md:h-40 hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_rgba(30,58,138,0.2)] hover:border-blue-900 transition-all duration-300 relative group overflow-hidden"
                         >
+                            <div className="absolute inset-0 bg-gradient-to-br from-slate-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                             <Image
                                 src={client.image}
                                 alt={client.name}
                                 width={160}
                                 height={80}
-                                className="object-contain max-h-20 md:max-h-24 w-auto"
+                                className="object-contain max-w-[120px] md:max-w-[140px] max-h-[60px] md:max-h-[70px] group-hover:scale-110 transition-transform duration-500 relative z-10"
                                 loading="lazy"
                             />
                         </div>
                     ))}
                 </div>
-            </Container>
 
-            <Container className="py-8 md:py-12">
                 {/* Stats */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-12 md:mb-16">
-                    <div className="text-center p-4 md:p-6 bg-gradient-to-br from-sky-50 to-white rounded-xl border border-sky-100">
-                        <div className="text-3xl md:text-4xl font-bold text-sky-600 mb-1 md:mb-2">{totalClients}+</div>
-                        <div className="text-xs md:text-sm text-gray-600">Happy Clients</div>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-1 bg-gray-200 border border-gray-200 rounded-sm overflow-hidden shadow-sm mb-20 md:mb-24">
+                    <div className="text-center p-8 bg-white hover:bg-slate-50 transition-colors group">
+                        <div className="text-4xl md:text-5xl font-extrabold text-blue-900 mb-2 group-hover:scale-105 transition-transform">{totalClients}+</div>
+                        <div className="text-sm font-bold text-gray-500 uppercase tracking-wide">Happy Clients</div>
                     </div>
-                    <div className="text-center p-4 md:p-6 bg-gradient-to-br from-sky-50 to-white rounded-xl border border-sky-100">
-                        <div className="text-3xl md:text-4xl font-bold text-sky-600 mb-1 md:mb-2">98%</div>
-                        <div className="text-xs md:text-sm text-gray-600">Satisfaction Rate</div>
+                    <div className="text-center p-8 bg-white hover:bg-slate-50 transition-colors group">
+                        <div className="text-4xl md:text-5xl font-extrabold text-blue-900 mb-2 group-hover:scale-105 transition-transform">98%</div>
+                        <div className="text-sm font-bold text-gray-500 uppercase tracking-wide">Satisfaction Rate</div>
                     </div>
-                    <div className="text-center p-4 md:p-6 bg-gradient-to-br from-sky-50 to-white rounded-xl border border-sky-100">
-                        <div className="text-3xl md:text-4xl font-bold text-sky-600 mb-1 md:mb-2">24/7</div>
-                        <div className="text-xs md:text-sm text-gray-600">Support</div>
+                    <div className="text-center p-8 bg-white hover:bg-slate-50 transition-colors group">
+                        <div className="text-4xl md:text-5xl font-extrabold text-blue-900 mb-2 group-hover:scale-105 transition-transform">24/7</div>
+                        <div className="text-sm font-bold text-gray-500 uppercase tracking-wide">Support</div>
                     </div>
-                    <div className="text-center p-4 md:p-6 bg-gradient-to-br from-sky-50 to-white rounded-xl border border-sky-100">
-                        <div className="text-3xl md:text-4xl font-bold text-sky-600 mb-1 md:mb-2">10+</div>
-                        <div className="text-xs md:text-sm text-gray-600">Years Experience</div>
+                    <div className="text-center p-8 bg-white hover:bg-slate-50 transition-colors group">
+                        <div className="text-4xl md:text-5xl font-extrabold text-blue-900 mb-2 group-hover:scale-105 transition-transform">10+</div>
+                        <div className="text-sm font-bold text-gray-500 uppercase tracking-wide">Years Experience</div>
                     </div>
                 </div>
 
                 {/* Client Testimonials */}
-                <div className="mb-16 md:mb-20">
-                    <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 md:mb-8 text-center px-4">
-                        What Our Clients Say
-                    </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                <div className="mb-20 md:mb-24">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl md:text-4xl font-extrabold text-blue-950 mb-4 tracking-tight">
+                            What Our Clients Say
+                        </h2>
+                        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                            Feedback from the organizations that rely on our systems every day.
+                        </p>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
                         {TESTIMONIALS.map((testimonial) => (
-                            <div key={testimonial.id} className="bg-white rounded-xl border border-sky-100 p-6 md:p-8 hover:shadow-lg transition-shadow">
-                                <div className="flex items-center mb-4">
+                            <div key={testimonial.id} className="bg-white rounded-sm border border-gray-200 p-8 hover:border-blue-900 hover:shadow-lg transition-all duration-300 relative group">
+                                <div className="absolute inset-0 border-2 border-transparent group-hover:border-blue-900 transition-colors pointer-events-none z-10" />
+                                <div className="flex items-center mb-6">
                                     {Array.from({ length: testimonial.rating }).map((_, i) => (
-                                        <FaStar key={i} className="text-yellow-400 text-base md:text-lg" />
+                                        <FaStar key={i} className="text-blue-800 text-lg md:text-xl" />
                                     ))}
                                 </div>
-                                <p className="text-gray-700 mb-4 md:mb-6 italic leading-relaxed text-sm md:text-base">
-                                    &quot;{testimonial.content}&quot;
+                                <p className="text-gray-700 mb-8 leading-relaxed text-base md:text-lg">
+                                    "{testimonial.content}"
                                 </p>
-                                <div className="pt-4 border-t border-sky-100">
-                                    <h4 className="text-gray-900 font-semibold text-base md:text-lg">{testimonial.name}</h4>
-                                    <p className="text-gray-600 text-xs md:text-sm">{testimonial.role}, {testimonial.company}</p>
+                                <div className="pt-6 border-t border-gray-200 flex items-center gap-4">
+                                    <div className="w-12 h-12 bg-slate-100 rounded-sm border border-gray-200 flex items-center justify-center font-bold text-blue-900 text-lg">
+                                        {testimonial.name.charAt(0)}
+                                    </div>
+                                    <div>
+                                        <h4 className="text-blue-950 font-extrabold text-base tracking-tight">{testimonial.name}</h4>
+                                        <p className="text-gray-600 text-sm font-medium">{testimonial.role}, {testimonial.company}</p>
+                                    </div>
                                 </div>
                             </div>
                         ))}
@@ -245,40 +262,41 @@ export default function ClientsPage() {
                 </div>
 
                 {/* Clients by Location */}
-                <div className="mb-16 md:mb-20">
-                    <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 md:mb-4 text-center px-4">
-                        Our Global Presence
-                    </h2>
-                    <p className="text-center text-gray-600 mb-8 md:mb-10 max-w-2xl mx-auto text-sm md:text-base">
-                        Serving clients across {clientsByLocation.length} locations in India and internationally
-                    </p>
+                <div className="mb-0">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl md:text-4xl font-extrabold text-blue-950 mb-4 tracking-tight">
+                            Our Global Presence
+                        </h2>
+                        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                            Serving clients across {clientsByLocation.length} locations in India and internationally
+                        </p>
+                    </div>
                     
                     {/* Unified Location List */}
-                    <div className="space-y-4 md:space-y-5">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto">
                         {clientsByLocation.map((locationData, idx) => (
-                            <div key={idx} className="group bg-white rounded-xl border-2 border-sky-100 hover:border-sky-300 hover:shadow-lg transition-all duration-300 overflow-hidden">
-                                <div className="bg-gradient-to-r from-sky-50 to-white p-3 md:p-4 border-b border-sky-100">
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br from-sky-500 to-sky-600 flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-105 transition-transform">
-                                            <FaMapMarkerAlt className="text-white" size={16} />
+                            <div key={idx} className="group bg-white rounded-sm border border-gray-200 hover:border-blue-900 transition-all duration-300 relative">
+                                <div className="absolute inset-0 border-2 border-transparent group-hover:border-blue-900 transition-colors pointer-events-none z-10" />
+                                <div className="bg-slate-50 p-5 md:p-6 border-b border-gray-200 flex items-center justify-between group-hover:bg-white transition-colors">
+                                    <div className="flex items-center gap-4">
+                                        <div className="w-12 h-12 bg-white text-blue-900 border border-gray-200 rounded-sm flex items-center justify-center group-hover:bg-blue-900 group-hover:text-white transition-colors">
+                                            <FaMapMarkerAlt size={18} />
                                         </div>
-                                        <div className="flex-1 min-w-0">
-                                            <h3 className="text-base md:text-lg font-bold text-gray-900 mb-1">{locationData.location}</h3>
-                                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-sky-600 text-white">
-                                                {locationData.count} {locationData.count === 1 ? 'Client' : 'Clients'}
-                                            </span>
-                                        </div>
+                                        <h3 className="text-xl font-extrabold text-blue-950 tracking-tight">{locationData.location}</h3>
                                     </div>
+                                    <span className="inline-flex items-center px-4 py-1.5 rounded-sm text-sm font-bold bg-blue-900 text-white tracking-wide">
+                                        {locationData.count} {locationData.count === 1 ? 'Client' : 'Clients'}
+                                    </span>
                                 </div>
-                                <div className="p-3 md:p-5">
+                                <div className="p-5 md:p-6">
                                     <div className="flex flex-wrap gap-2">
                                         {locationData.clients.map((client, clientIdx) => (
                                             <div 
                                                 key={clientIdx} 
-                                                className="inline-flex items-center gap-1.5 px-2.5 md:px-3 py-1.5 md:py-2 bg-sky-50 hover:bg-sky-100 border border-sky-200 rounded-lg text-xs md:text-sm text-gray-700 hover:text-gray-900 font-medium transition-all hover:shadow-md group/item"
+                                                className="inline-flex items-center gap-2 px-3 py-1.5 bg-white border border-gray-200 hover:border-blue-900 rounded-sm text-sm text-gray-700 hover:text-blue-950 font-bold transition-all hover:bg-slate-50"
                                             >
-                                                <span className="text-sky-600 text-sm font-bold group-hover/item:text-sky-700">✓</span>
-                                                <span>{client}</span>
+                                                <span className="text-blue-900">✓</span>
+                                                {client}
                                             </div>
                                         ))}
                                     </div>
@@ -287,29 +305,31 @@ export default function ClientsPage() {
                         ))}
                     </div>
                 </div>
+            </Container>
 
-                {/* CTA Section */}
-                <div className="bg-gradient-to-br from-sky-600 to-sky-700 rounded-xl md:rounded-2xl p-8 md:p-12 text-center text-white shadow-2xl">
-                    <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4">
-                        Join Our Growing Family of Satisfied Clients
+            {/* CTA Section */}
+            <div className="bg-blue-950 border-t border-blue-900 py-16 md:py-24 text-center w-full px-4">
+                <div className="max-w-3xl mx-auto">
+                    <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">
+                        Ready to Transform Your Business?
                     </h2>
-                    <p className="text-base md:text-lg text-sky-100 mb-6 md:mb-8 max-w-2xl mx-auto px-4">
-                        Experience the difference our solutions can make for your organization. Get started with a free consultation today.
+                    <p className="text-lg md:text-xl text-blue-100 mb-10 leading-relaxed font-medium">
+                        Get in touch with our team to discuss how we can create a custom solution for your organization's unique challenges.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <Link href="/demo" className="w-full sm:w-auto">
-                            <button className="w-full sm:w-auto px-8 py-3.5 bg-white text-sky-600 font-semibold rounded-lg hover:bg-sky-50 hover:shadow-lg transition-all duration-200 active:scale-95">
-                                Get Started Today
+                        <Link href="/contact">
+                            <button className="w-full sm:w-auto px-8 py-4 bg-white text-blue-950 text-base font-bold tracking-wide rounded-sm hover:bg-gray-100 transition-colors">
+                                Contact Us Today
                             </button>
                         </Link>
-                        <Link href="/contact" className="w-full sm:w-auto">
-                            <button className="w-full sm:w-auto px-8 py-3.5 bg-sky-800 text-white font-semibold rounded-lg border-2 border-white/30 hover:bg-sky-900 hover:border-white hover:shadow-lg transition-all duration-200 active:scale-95">
-                                Contact Sales
+                        <Link href="/services/hospital">
+                            <button className="w-full sm:w-auto px-8 py-4 bg-blue-900 text-white text-base font-bold tracking-wide rounded-sm border border-blue-800 hover:bg-blue-800 transition-colors">
+                                View Our Solutions
                             </button>
                         </Link>
                     </div>
                 </div>
-            </Container>
+            </div>
         </div>
     );
 }

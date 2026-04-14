@@ -80,77 +80,80 @@ export default function CareersPage() {
     ];
 
     return (
-        <div className="min-h-screen bg-white">
-            {/* Hero Section */}
-            <div className="bg-gradient-to-br from-sky-50 via-white to-sky-50/30 pt-24 md:pt-32 pb-16">
-                <Container>
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <div className="text-left space-y-6 max-w-2xl">
-                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-sky-100 rounded-full">
-                                <FaBriefcase className="text-sky-600" />
-                                <span className="text-sm font-semibold text-sky-700">We're Hiring!</span>
-                            </div>
-                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                                Join Our <span className="text-sky-600">Growing Team</span>
-                            </h1>
-                            <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
-                                Be part of a dynamic team building innovative software solutions that make a real difference 
-                                in healthcare, education, and business management. With 15+ years of excellence, we're looking for passionate individuals to grow with us.
-                            </p>
-                            <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
-                                <a href="#openings" className="w-full sm:w-auto">
-                                    <button className="w-full sm:w-auto px-8 py-3.5 bg-sky-600 text-white font-semibold rounded-lg hover:bg-sky-700 hover:shadow-lg transition-all duration-200 active:scale-95 flex items-center justify-center gap-2">
-                                        <span>View Open Positions</span>
-                                        <FaArrowRight size={14} />
-                                    </button>
-                                </a>
-                                <a href="#internship" className="w-full sm:w-auto">
-                                    <button className="w-full sm:w-auto px-8 py-3.5 bg-white text-sky-600 font-semibold rounded-lg border-2 border-sky-200 hover:border-sky-400 hover:shadow-lg transition-all duration-200 active:scale-95">
-                                        Internship Program
-                                    </button>
-                                </a>
-                            </div>
+        <div className="min-h-screen bg-slate-50">
+            {/* Hero Section - Split Slide Design */}
+            <div className="relative bg-white border-b border-gray-200 overflow-hidden flex flex-col lg:flex-row mt-[76px] lg:mt-[88px]">
+                
+                {/* Left Side: Content aligned to container grid securely */}
+                <div className="w-full lg:w-1/2 flex items-center py-12 lg:py-20 px-6 md:px-12 lg:px-16 xl:px-24 z-10 bg-white">
+                    <div className="max-w-2xl w-full mx-auto lg:mx-0 lg:ml-auto">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 border border-gray-200 rounded-sm mb-8">
+                            <FaBriefcase className="text-blue-900" />
+                            <span className="text-sm font-extrabold tracking-wide text-blue-950 uppercase">We're Hiring!</span>
                         </div>
+                        <h1 className="text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-extrabold text-blue-950 mb-6 tracking-tight leading-[1.1]">
+                            Join Our <br className="hidden md:block"/> Growing <br className="hidden lg:block"/> Team
+                        </h1>
+                        <p className="text-lg md:text-xl text-gray-600 leading-relaxed font-medium mb-12 max-w-xl">
+                            Be part of a dynamic team building innovative software solutions that make a real difference 
+                            in healthcare, education, and enterprise management. 
+                        </p>
                         
-                        {/* Right side - Image */}
-                        <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl group">
-                            <Image 
-                                src="/Assets/careers.jpg"
-                                alt="Careers at Crescent"
-                                fill
-                                className="object-cover group-hover:scale-105 transition-transform duration-700"
-                                priority
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 via-transparent to-transparent"></div>
+                        <div className="flex flex-col sm:flex-row items-center gap-4 mt-auto">
+                            <a href="#openings" className="w-full sm:w-auto">
+                                <button className="w-full sm:w-auto px-8 py-4 bg-blue-950 text-white font-bold tracking-wide rounded-sm hover:bg-blue-900 focus:outline-none transition-colors border border-blue-900 flex items-center justify-center gap-3">
+                                    <span>View Open Positions</span>
+                                    <FaArrowRight size={14} />
+                                </button>
+                            </a>
+                            <a href="#internship" className="w-full sm:w-auto">
+                                <button className="w-full sm:w-auto px-8 py-4 bg-white text-blue-950 font-bold tracking-wide rounded-sm border border-gray-300 hover:border-blue-900 hover:bg-slate-50 transition-colors">
+                                    Internship Program
+                                </button>
+                            </a>
                         </div>
                     </div>
-                </Container>
+                </div>
+
+                {/* Right Side: Full Bleed Image */}
+                <div className="w-full lg:w-1/2 min-h-[400px] md:min-h-[500px] lg:min-h-full relative overflow-hidden group border-t-4 lg:border-t-0 lg:border-l-8 border-white bg-slate-200 flex-grow">
+                    <Image
+                        src="/Assets/careers.jpg"
+                        alt="Careers at Crescent"
+                        fill
+                        className="object-cover transition-transform duration-[2000ms] group-hover:scale-105"
+                        priority
+                    />
+                    {/* Hover Tint */}
+                    <div className="absolute inset-0 bg-blue-950/10 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
+                </div>
             </div>
 
-            <Container className="py-16 md:py-20">
+            <Container className="py-16 md:py-24">
                 {/* Why Join Us */}
-                <div className="mb-20">
+                <div className="mb-20 md:mb-24">
                     <div className="text-center mb-12">
-                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                        <h2 className="text-3xl md:text-4xl font-extrabold text-blue-950 mb-4 tracking-tight">
                             Why Work With Us?
                         </h2>
                         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                            We believe in creating an environment where talent thrives and innovation flourishes
+                            We believe in creating an environment where talent thrives and innovation flourishes.
                         </p>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
                         {benefits.map((benefit, index) => {
                             const Icon = benefit.icon;
                             return (
                                 <div 
                                     key={index} 
-                                    className="group bg-white rounded-xl border-2 border-sky-100 hover:border-sky-300 p-6 hover:shadow-xl transition-all duration-300"
+                                    className="bg-white rounded-sm border border-gray-200 p-8 hover:-translate-y-1 hover:shadow-lg hover:border-blue-900 transition-all duration-300 relative group"
                                 >
-                                    <div className="w-14 h-14 bg-gradient-to-br from-sky-500 to-sky-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg">
-                                        <Icon className="text-white text-xl" />
+                                    <div className="absolute inset-0 border-2 border-transparent group-hover:border-blue-900 transition-colors pointer-events-none z-10" />
+                                    <div className="w-14 h-14 bg-slate-50 text-blue-900 border border-gray-200 shadow-sm rounded-sm flex items-center justify-center mb-6 group-hover:bg-blue-900 group-hover:text-white transition-all duration-300">
+                                        <Icon className="text-2xl" />
                                     </div>
-                                    <h3 className="text-xl font-bold text-gray-900 mb-2">{benefit.title}</h3>
-                                    <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
+                                    <h3 className="text-xl font-extrabold text-blue-950 mb-3 tracking-tight">{benefit.title}</h3>
+                                    <p className="text-base text-gray-600 leading-relaxed">{benefit.description}</p>
                                 </div>
                             );
                         })}
@@ -158,65 +161,63 @@ export default function CareersPage() {
                 </div>
 
                 {/* Open Positions */}
-                <div id="openings" className="mb-20 scroll-mt-20">
+                <div id="openings" className="mb-20 md:mb-24 scroll-mt-24">
                     <div className="text-center mb-12">
-                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                        <h2 className="text-3xl md:text-4xl font-extrabold text-blue-950 mb-4 tracking-tight">
                             Open Positions
                         </h2>
                         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                            Explore our current openings and find the perfect role for your skills and aspirations
+                            Explore our current openings and find the perfect role for your skills and aspirations.
                         </p>
                     </div>
-                    <div className="space-y-6">
+                    <div className="space-y-6 max-w-5xl mx-auto">
                         {positions.map((position, index) => {
                             const Icon = position.icon;
                             return (
                                 <div 
                                     key={index} 
-                                    className="bg-white rounded-xl border-2 border-sky-100 hover:border-sky-300 p-6 md:p-8 hover:shadow-xl transition-all duration-300"
+                                    className="bg-white rounded-sm border border-gray-200 p-6 md:p-8 hover:border-blue-900 transition-all duration-300 relative group"
                                 >
-                                    <div className="flex flex-col md:flex-row gap-6">
+                                    <div className="absolute inset-0 border-2 border-transparent group-hover:border-blue-900 transition-colors pointer-events-none z-10" />
+                                    <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start md:items-center">
+                                        <div className="w-14 h-14 bg-slate-50 text-blue-900 border border-gray-200 shadow-sm rounded-sm flex items-center justify-center flex-shrink-0 transition-colors duration-300 group-hover:bg-blue-900 group-hover:text-white">
+                                            <Icon size={24} />
+                                        </div>
                                         <div className="flex-1">
-                                            <div className="flex items-start gap-4 mb-4">
-                                                <div className="w-12 h-12 bg-gradient-to-br from-sky-500 to-sky-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md">
-                                                    <Icon className="text-white" size={20} />
-                                                </div>
-                                                <div className="flex-1">
-                                                    <h3 className="text-2xl font-bold text-gray-900 mb-2">{position.title}</h3>
-                                                    <div className="flex flex-wrap gap-3 mb-3">
-                                                        <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-sky-100 text-sky-700 rounded-full text-sm font-medium">
-                                                            <FaBriefcase size={12} />
-                                                            {position.department}
-                                                        </span>
-                                                        <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-sky-100 text-sky-700 rounded-full text-sm font-medium">
-                                                            <FaClock size={12} />
-                                                            {position.type}
-                                                        </span>
-                                                        <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-sky-100 text-sky-700 rounded-full text-sm font-medium">
-                                                            <FaMapMarkerAlt size={12} />
-                                                            {position.location}
-                                                        </span>
-                                                    </div>
-                                                </div>
+                                            <h3 className="text-2xl font-extrabold text-blue-950 mb-3 tracking-tight">{position.title}</h3>
+                                            <div className="flex flex-wrap gap-3 mb-4">
+                                                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 border border-gray-200 text-blue-950 rounded-sm text-sm font-bold uppercase tracking-wide">
+                                                    <FaBriefcase size={12} className="text-blue-900" />
+                                                    {position.department}
+                                                </span>
+                                                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 border border-gray-200 text-blue-950 rounded-sm text-sm font-bold uppercase tracking-wide">
+                                                    <FaClock size={12} className="text-blue-900" />
+                                                    {position.type}
+                                                </span>
+                                                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 border border-gray-200 text-blue-950 rounded-sm text-sm font-bold uppercase tracking-wide">
+                                                    <FaMapMarkerAlt size={12} className="text-blue-900" />
+                                                    {position.location}
+                                                </span>
                                             </div>
-                                            <p className="text-gray-700 mb-4 leading-relaxed">{position.description}</p>
-                                            <div className="bg-sky-50 rounded-lg p-4 border border-sky-100">
-                                                <h4 className="font-semibold text-gray-900 mb-2 text-sm">Key Responsibilities:</h4>
-                                                <ul className="space-y-1.5">
+                                            <p className="text-gray-600 mb-6 leading-relaxed text-base">
+                                                {position.description}
+                                            </p>
+                                            <div className="space-y-3">
+                                                <h4 className="font-extrabold text-blue-950 text-sm uppercase tracking-wide">Key Responsibilities:</h4>
+                                                <ul className="space-y-2">
                                                     {position.responsibilities.map((resp, idx) => (
-                                                        <li key={idx} className="flex items-start gap-2 text-sm text-gray-700">
-                                                            <span className="text-sky-600 font-bold mt-0.5">•</span>
-                                                            <span>{resp}</span>
+                                                        <li key={idx} className="flex items-start gap-3">
+                                                            <div className="mt-1.5 w-1.5 h-1.5 bg-blue-900 rounded-sm flex-shrink-0"></div>
+                                                            <span className="text-gray-600 text-sm leading-relaxed">{resp}</span>
                                                         </li>
                                                     ))}
                                                 </ul>
                                             </div>
                                         </div>
-                                        <div className="flex md:flex-col gap-3 md:justify-center">
+                                        <div className="w-full md:w-auto flex flex-col justify-center border-t md:border-t-0 md:border-l border-gray-200 pt-6 md:pt-0 md:pl-8 self-stretch">
                                             <Link href="/contact" className="flex-1 md:flex-initial">
-                                                <button className="w-full px-6 py-3 bg-sky-600 text-white font-semibold rounded-lg hover:bg-sky-700 hover:shadow-lg transition-all duration-200 active:scale-95 flex items-center justify-center gap-2">
-                                                    <span>Apply Now</span>
-                                                    <FaArrowRight size={14} />
+                                                <button className="w-full md:w-auto px-8 py-3.5 bg-white border-2 border-blue-900 text-blue-950 font-bold tracking-wide rounded-sm hover:bg-blue-900 hover:text-white transition-all duration-300 whitespace-nowrap">
+                                                    Apply Now
                                                 </button>
                                             </Link>
                                         </div>
@@ -227,33 +228,36 @@ export default function CareersPage() {
                     </div>
                 </div>
 
-                {/* Internship Program */}
-                <div id="internship" className="scroll-mt-20">
-                    <div className="bg-gradient-to-br from-sky-600 to-sky-700 rounded-2xl p-8 md:p-12 text-white shadow-2xl">
-                        <div className="max-w-3xl mx-auto text-center">
-                            <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-6">
-                                <FaGraduationCap className="text-white text-3xl" />
+                {/* Internship Program CTA Box */}
+                <div id="internship" className="scroll-mt-24">
+                    <div className="bg-slate-50 border border-gray-200 rounded-sm p-8 md:p-12 relative overflow-hidden group">
+                        <div className="absolute inset-0 border-2 border-transparent group-hover:border-blue-900 transition-colors pointer-events-none z-10" />
+                        <div className="relative z-20 flex flex-col md:flex-row gap-8 items-center justify-between">
+                            <div className="flex-1 text-center md:text-left">
+                                <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 shadow-sm rounded-sm mb-6">
+                                    <FaGraduationCap className="text-blue-900" />
+                                    <span className="text-sm font-extrabold tracking-wide text-blue-950 uppercase">Students & Freshers</span>
+                                </div>
+                                <h2 className="text-3xl md:text-4xl font-extrabold text-blue-950 mb-4 tracking-tight">
+                                    Online Internship Program
+                                </h2>
+                                <p className="text-lg text-gray-600 max-w-2xl leading-relaxed">
+                                    We offer comprehensive online internships in software development for computer science graduates. 
+                                    Gain practical experience, learn from industry experts, and kickstart your career in tech.
+                                </p>
                             </div>
-                            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                                Online Internship Program
-                            </h2>
-                            <p className="text-lg text-sky-100 mb-8 leading-relaxed">
-                                We offer comprehensive online internships in software development for computer science graduates. 
-                                Gain practical experience, learn from industry experts, and kickstart your career in tech.
-                            </p>
-                            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                            <div className="flex-shrink-0 flex flex-col sm:flex-row gap-4">
                                 <a 
-                                    href="https://intern2experts.crescenttechnosofts.com/courses/" 
+                                    href="https://intern2experts.crescenttechnosoft.com/courses/" 
                                     target="_blank" 
                                     rel="noopener noreferrer"
                                 >
-                                    <button className="w-full sm:w-auto px-8 py-3.5 bg-white text-sky-600 font-semibold rounded-lg hover:bg-sky-50 hover:shadow-lg transition-all duration-200 active:scale-95 flex items-center justify-center gap-2">
-                                        <span>Register for Internship</span>
-                                        <FaArrowRight size={14} />
+                                    <button className="w-full px-8 py-4 bg-blue-950 text-white font-bold tracking-wide rounded-sm hover:bg-blue-900 transition-colors border border-blue-900">
+                                        Register Now
                                     </button>
                                 </a>
                                 <Link href="/contact">
-                                    <button className="w-full sm:w-auto px-8 py-3.5 bg-sky-800 text-white font-semibold rounded-lg border-2 border-white/30 hover:bg-sky-900 hover:border-white hover:shadow-lg transition-all duration-200 active:scale-95">
+                                    <button className="w-full px-8 py-4 bg-white text-blue-950 font-bold tracking-wide rounded-sm hover:bg-slate-100 transition-colors border border-gray-300">
                                         Learn More
                                     </button>
                                 </Link>

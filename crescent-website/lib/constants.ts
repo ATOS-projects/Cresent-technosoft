@@ -116,39 +116,39 @@ export interface ContactInfo {
 
 export const CONTACT_INFO: ContactInfo = {
     phones: ['044-43556696', '9944992460', '8870532269'],
-    emails: ['crescentonline@gmail.com', 'info@crescenttechnosofts.com'],
+    emails: ['crescentonline@gmail.com', 'info@crescenttechnosoft.com'],
     address: 'Global Presence: India, UAE, Sri Lanka',
     locations: [
         {
             name: 'Bangalore',
             phones: ['9944992460', '9945702795'],
             address: 'Crescent Workspace, 5AC, 961, HRBR Layout, 1st Block, Bangalore-560 043',
-            email: 'info@crescenttechnosofts.com',
+            email: 'info@crescenttechnosoft.com',
             type: 'Headquarters'
         },
         {
             name: 'UAE',
             phones: ['+971-555277305'],
             address: 'Dubai, United Arab Emirates',
-            email: 'info@crescenttechnosofts.com'
+            email: 'info@crescenttechnosoft.com'
         },
         {
             name: 'Sri Lanka',
             phones: ['+94778032737'],
             address: 'Colombo, Sri Lanka',
-            email: 'info@crescenttechnosofts.com'
+            email: 'info@crescenttechnosoft.com'
         },
         {
             name: 'Madurai',
             phones: ['9994288209'],
             address: '23/5, Jahangeer Khan Street, Goripalyam, Madurai-2',
-            email: 'crescentmaduraibranch@crescenttechnosofts.com'
+            email: 'crescentmaduraibranch@crescenttechnosoft.com'
         },
         {
             name: 'Trichy',
             phones: ['9443713869'],
             address: 'No.35 Anbil Nagar, Wireless Station Road, Trichy - 620021',
-            email: 'info@crescenttechnosofts.com'
+            email: 'info@crescenttechnosoft.com'
         },
         {
             name: 'Gulbarga',
@@ -176,8 +176,7 @@ export const NAV_LINKS: NavLink[] = [
     { label: 'Clients', href: '/clients' },
     { label: 'Careers', href: '/careers' },
     { label: 'Partner Program', href: '/partner-program' },
-    { label: 'Contact Us', href: '/contact' },
-    { label: 'Blogs', href: '/blogs' }
+    { label: 'Contact Us', href: '/contact' }
 ];
 
 export interface Testimonial {

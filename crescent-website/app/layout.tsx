@@ -12,7 +12,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Crescent Technosofts - Leading Software Solutions Provider",
+  title: "Crescent Technosoft",
   description: "Comprehensive software solutions for healthcare, education, and business management. Hospital Management, Lab Management, Clinic Management, and more.",
   keywords: "hospital management software, lab management software, clinic management, pharmacy software, school management, inventory management",
   icons: {
@@ -31,7 +31,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body className={inter.className}>
         <Header />
-        <main className="min-h-screen">
+        <main>
           {children}
         </main>
         <Footer />

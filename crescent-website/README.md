@@ -1,6 +1,6 @@
-# Crescent Technosofts — Official Website
+# Crescent Technosoft — Official Website
 
-A modern, high-performance corporate website for **Crescent Technosofts**, built with Next.js and featuring a premium dark neon aesthetic with full light/dark mode support.
+A modern, high-performance corporate website for **Crescent Technosoft**, built with Next.js and featuring a premium dark neon aesthetic with full light/dark mode support.
 
 ## Tech Stack
 
@@ -132,4 +132,4 @@ Or use any Node.js hosting platform that supports Next.js.
 
 ---
 
-**Built by Crescent Technosofts** · [crescenttechnosofts.com](https://crescenttechnosofts.com)
+**Built by Crescent Technosoft** · [crescenttechnosoft.com](https://crescenttechnosoft.com)

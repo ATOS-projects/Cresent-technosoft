@@ -24,11 +24,11 @@ export const Button: React.FC<ButtonProps> = ({
     const baseStyles = 'inline-flex items-center gap-2 font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed active:scale-95 relative group';
 
     const variants = {
-        primary: 'bg-sky-600 text-white hover:bg-sky-700 shadow-sm hover:shadow-md',
-        secondary: 'bg-sky-500 text-white hover:bg-sky-600 shadow-sm hover:shadow-md',
-        outline: 'border border-sky-200 text-sky-600 hover:bg-sky-50',
+        primary: 'bg-blue-800 text-white hover:bg-blue-900 shadow-sm hover:shadow-md',
+        secondary: 'bg-blue-700 text-white hover:bg-blue-800 shadow-sm hover:shadow-md',
+        outline: 'border border-blue-200 text-blue-800 hover:bg-blue-50',
         ghost: 'text-gray-600 hover:bg-gray-100',
-        neon: 'bg-sky-600 text-white hover:bg-sky-700 shadow-md'
+        neon: 'bg-blue-800 text-white hover:bg-blue-900 shadow-md'
     };
 
     const sizes = {

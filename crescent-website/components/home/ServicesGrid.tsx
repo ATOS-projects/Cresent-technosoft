@@ -8,15 +8,14 @@ import { FaArrowRight } from 'react-icons/fa';
 
 export const ServicesGrid: React.FC = () => {
     return (
-        <section className="py-16 md:py-20 bg-white">
+        <section className="py-12 md:py-16 bg-slate-50 border-t border-gray-200">
             <Container>
-                <div className="text-center mb-12">
-                    <span className="text-sky-600 font-semibold tracking-wider uppercase text-sm mb-2 block">Our Expertise</span>
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-gray-900">
-                        Comprehensive <span className="text-sky-600">Services</span>
+                <div className="mb-10 md:max-w-3xl">
+                    <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+                        Healthcare Management Solutions
                     </h2>
-                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                        Cutting-edge software solutions tailored to elevate your business operations
+                    <p className="text-gray-600 max-w-2xl">
+                        Comprehensive administrative and clinical software modules designed for hospitals, clinics, and laboratories.
                     </p>
                 </div>
 
@@ -25,36 +24,25 @@ export const ServicesGrid: React.FC = () => {
                         const Icon = service.icon;
 
                         return (
-                            <Link key={service.id} href={service.href} className="block h-full group">
-                                <div className="h-full bg-white rounded-xl border-2 border-sky-100 hover:border-sky-300 p-6 hover:shadow-xl transition-all duration-300">
+                            <Link key={service.id} href={service.href} className="block group">
+                                <div className="h-full bg-white p-6 md:p-8 rounded border border-gray-200 hover:border-blue-700 hover:shadow-lg transition-all duration-200">
                                     <div className="flex flex-col h-full">
-                                        {/* Icon - solid color without gradient */}
-                                        <div className="w-14 h-14 bg-sky-600 rounded-xl flex items-center justify-center mb-5 group-hover:scale-105 transition-transform">
-                                            <Icon className="text-white text-2xl" />
+                                        
+                                        <div className="mb-5 w-12 h-12 flex items-center justify-center bg-blue-50 text-blue-800 rounded">
+                                            <Icon className="text-xl" />
                                         </div>
 
-                                        <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-sky-600 transition-colors">
+                                        <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-900 transition-colors">
                                             {service.title}
                                         </h3>
 
-                                        <p className="text-gray-600 text-sm mb-5 flex-grow leading-relaxed">
+                                        <p className="text-gray-600 text-sm mb-6 flex-grow">
                                             {service.description}
                                         </p>
 
-                                        {service.features && (
-                                            <ul className="space-y-2 mb-5">
-                                                {service.features.slice(0, 3).map((feature, idx) => (
-                                                    <li key={idx} className="text-sm text-gray-700 flex items-start">
-                                                        <span className="w-1.5 h-1.5 rounded-full bg-sky-500 mr-3 mt-1.5 flex-shrink-0"></span>
-                                                        <span>{feature}</span>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        )}
-
-                                        <div className="flex items-center text-sm font-semibold text-sky-600 group-hover:gap-2 transition-all mt-auto pt-4 border-t border-sky-100">
-                                            <span>Explore Solution</span>
-                                            <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                                        <div className="flex items-center text-sm font-semibold text-blue-700 mt-auto pt-4 border-t border-gray-100 group-hover:text-blue-900">
+                                            <span>Learn More</span>
+                                            <FaArrowRight className="ml-2 w-3 h-3 group-hover:translate-x-1 transition-transform" />
                                         </div>
                                     </div>
                                 </div>

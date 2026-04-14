@@ -1,114 +1,128 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Container } from '../ui/Container';
 import { FaRocket, FaArrowRight, FaCheckCircle } from 'react-icons/fa';
+import { AnimatePresence, motion } from 'framer-motion';
+
+const slides = [
+    {
+        title: "Next-Generation Hospital Management",
+        subtitle: "Integrated Software for Modern Healthcare",
+        description: "Empowering healthcare providers with a comprehensive, secure, and scalable Hospital Management System designed for efficiency and patient-centric care.",
+        image: "/Assets/hospital tech.jpg",
+    },
+    {
+        title: "Advanced Lab & Clinic Solutions",
+        subtitle: "Streamlining Diagnostics & Care",
+        description: "From sample tracking in labs to appointment scheduling in clinics, our specialized software enhances accuracy and operational workflow.",
+        image: "/Assets/home page.avif",
+    },
+    {
+        title: "Intelligent Pharmacy & Inventory",
+        subtitle: "Optimized for Accuracy and Control",
+        description: "Manage prescriptions, track stock, and streamline pharmacy operations with our integrated inventory and pharmacy management software.",
+        image: "/Assets/home page 3.avif",
+    },
+    {
+        title: "Data-Driven Healthcare Analytics",
+        subtitle: "Unlock Actionable Insights",
+        description: "Turn complex healthcare data into clear, actionable insights. Our analytics platform helps you improve patient outcomes and operational performance.",
+        image: "/Assets/home page 2.avif",
+    }
+];
 
 export const HeroSection: React.FC = () => {
+    const [currentSlide, setCurrentSlide] = useState(0);
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentSlide((prev) => (prev + 1) % slides.length);
+        }, 7000); // Change slide every 7 seconds
+        return () => clearInterval(timer);
+    }, []);
+
+    const slide = slides[currentSlide];
+
+    const textVariants = {
+        initial: { opacity: 0, x: -30 },
+        animate: { opacity: 1, x: 0 },
+        exit: { opacity: 0, x: 30 },
+    };
+
+    const imageVariants = {
+        initial: { opacity: 0, x: 30 },
+        animate: { opacity: 1, x: 0 },
+        exit: { opacity: 0, x: -30 },
+    };
+
     return (
-        <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20 bg-gradient-to-br from-sky-50 via-white to-blue-50">
-            <Container className="relative z-10 w-full py-12 md:py-16">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+        <section className="relative bg-white overflow-hidden">
+            <Container className="relative z-10 w-full pt-28 lg:pt-36 pb-20 lg:pb-28">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                     {/* Left Content */}
-                    <div className="space-y-6 md:space-y-8">
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight text-gray-900 tracking-tight">
-                            Innovative Software Solutions
-                            <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-blue-600">For Your Business</span>
-                        </h1>
+                    <div className="space-y-8 text-center lg:text-left">
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={currentSlide}
+                                variants={textVariants}
+                                initial="initial"
+                                animate="animate"
+                                exit="exit"
+                                transition={{ duration: 0.7, ease: 'easeInOut' }}
+                                className="lg:max-w-lg" // Enforce a max-width on the text container
+                            >
+                                <h1 className="text-4xl md:text-5xl font-extrabold leading-tight text-gray-900 tracking-tight">
+                                    {slide.title}
+                                    <br />
+                                    <span className="text-blue-800">{slide.subtitle}</span>
+                                </h1>
+                                <p className="text-lg text-gray-600 max-w-2xl leading-relaxed mt-6 mx-auto lg:mx-0">
+                                    {slide.description}
+                                </p>
+                            </motion.div>
+                        </AnimatePresence>
 
-                        <p className="text-lg md:text-xl text-gray-600 max-w-2xl leading-relaxed">
-                            Empowering healthcare, education, and businesses with cutting-edge management solutions.
-                            Transform your operations with our comprehensive software suite.
-                        </p>
-
-                        <div className="flex flex-col sm:flex-row gap-4 pt-2">
+                        <div className="flex flex-col sm:flex-row gap-4 pt-2 justify-center lg:justify-start">
                             <Link href="/demo" className="w-full sm:w-auto">
-                                <button className="w-full px-8 py-4 bg-sky-600 text-white font-semibold rounded-xl hover:bg-sky-700 shadow-[0_8px_30px_rgb(2,132,199,0.3)] hover:shadow-[0_8px_30px_rgb(2,132,199,0.5)] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2">
+                                <button className="w-full px-8 py-4 bg-blue-800 text-white font-semibold rounded-lg hover:bg-blue-900 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2">
                                     <FaRocket size={18} />
                                     <span>Get Free Demo</span>
                                 </button>
                             </Link>
                             <Link href="/contact" className="w-full sm:w-auto">
-                                <button className="w-full px-8 py-4 bg-white text-sky-600 font-semibold rounded-xl border-2 border-sky-200 hover:border-sky-400 hover:bg-sky-50 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2">
+                                <button className="w-full px-8 py-4 bg-white text-blue-800 font-semibold rounded-lg border border-gray-300 hover:border-blue-400 hover:bg-gray-50 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2">
                                     <span>Contact Sales</span>
                                     <FaArrowRight size={16} />
                                 </button>
                             </Link>
                         </div>
-                        
-                        {/* Trust Indicators */}
-                        <div className="pt-6 flex flex-wrap items-center gap-6 text-sm md:text-base font-medium text-gray-600">
-                            <div className="flex items-center gap-2 bg-white/60 px-3 py-1.5 rounded-lg border border-gray-100 shadow-sm">
-                                <FaCheckCircle className="text-green-500" />
-                                <span>ISO Certified</span>
-                            </div>
-                            <div className="flex items-center gap-2 bg-white/60 px-3 py-1.5 rounded-lg border border-gray-100 shadow-sm">
-                                <FaCheckCircle className="text-green-500" />
-                                <span>Secure & Reliable</span>
-                            </div>
-                            <div className="flex items-center gap-2 bg-white/60 px-3 py-1.5 rounded-lg border border-gray-100 shadow-sm">
-                                <FaCheckCircle className="text-green-500" />
-                                <span>24/7 Support</span>
-                            </div>
-                        </div>
                     </div>
 
-                    {/* Right Content - Image Collage */}
-                    <div className="relative w-full h-[500px] lg:h-[600px] hidden md:block">
-                        {/* Main Image */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] h-[85%] rounded-3xl overflow-hidden shadow-2xl z-20 border-8 border-white group">
-                            <Image 
-                                src="/Assets/home page.avif" 
-                                alt="Dashboard Interface" 
-                                fill 
-                                className="object-cover group-hover:scale-105 transition-transform duration-700"
-                                priority
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 via-transparent to-transparent"></div>
-                        </div>
-
-                        {/* Floating Image 1 (Top Right) */}
-                        <div className="absolute top-[5%] right-0 w-[45%] h-[40%] rounded-2xl overflow-hidden shadow-xl z-30 border-4 border-white animate-float-slow group">
-                            <Image 
-                                src="/Assets/home page 2.avif" 
-                                alt="Business Team" 
-                                fill 
-                                className="object-cover group-hover:scale-110 transition-transform duration-700" 
-                            />
-                        </div>
-
-                        {/* Floating Image 2 (Bottom Left) */}
-                        <div className="absolute bottom-[2%] left-0 w-[50%] h-[40%] rounded-2xl overflow-hidden shadow-xl z-30 border-4 border-white animate-float group">
-                            <Image 
-                                src="/Assets/home page 3.avif" 
-                                alt="Developer Workflow" 
-                                fill 
-                                className="object-cover group-hover:scale-110 transition-transform duration-700" 
-                            />
-                        </div>
-
-                        {/* Decorative background elements */}
-                        <div className="absolute top-1/4 -right-12 w-64 h-64 bg-sky-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob"></div>
-                        <div className="absolute -bottom-8 -left-12 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-2000"></div>
+                    {/* Right Content - Image */}
+                    <div className="relative w-full h-80 lg:h-[450px]">
+                        <AnimatePresence>
+                            <motion.div
+                                key={currentSlide}
+                                variants={imageVariants}
+                                initial="initial"
+                                animate="animate"
+                                exit="exit"
+                                transition={{ duration: 0.7, ease: 'easeInOut' }}
+                                className="absolute inset-0"
+                            >
+                                <Image
+                                    src={slide.image}
+                                    alt={slide.title}
+                                    fill
+                                    className="object-cover"
+                                    priority
+                                />
+                            </motion.div>
+                        </AnimatePresence>
                     </div>
-                </div>
-
-                {/* Stats Section moved to bottom */}
-                <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 relative z-30">
-                    {[
-                        { number: '60+', label: 'Happy Clients' },
-                        { number: '11+', label: 'Software Solutions' },
-                        { number: '24/7', label: 'Support' },
-                        { number: '15+', label: 'Years Experience' }
-                    ].map((stat, i) => (
-                        <div key={i} className="text-center p-6 md:p-8 bg-white/80 backdrop-blur-md rounded-2xl border border-sky-100 hover:border-sky-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group">
-                            <div className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-sky-600 to-blue-600 mb-2 group-hover:scale-110 transition-transform duration-300 inline-block">{stat.number}</div>
-                            <div className="text-gray-600 text-sm md:text-base font-semibold uppercase tracking-wider">{stat.label}</div>
-                        </div>
-                    ))}
                 </div>
             </Container>
         </section>

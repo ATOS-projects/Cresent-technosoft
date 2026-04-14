@@ -27,30 +27,30 @@ export const TestimonialsCarousel: React.FC = () => {
     const currentTestimonial = TESTIMONIALS[currentIndex];
 
     return (
-        <section className="py-12 md:py-16 bg-white">
+        <section className="py-12 md:py-16 bg-slate-50 border-t border-gray-200">
             <Container>
-                <div className="text-center mb-8 md:mb-10">
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+                <div className="text-center mb-10">
+                    <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
                         Client Testimonials
                     </h2>
-                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                        Hear from businesses we've helped transform
+                    <p className="text-gray-600 max-w-2xl mx-auto">
+                        Discover what leading healthcare providers say about partnering with us.
                     </p>
                 </div>
 
                 <div className="max-w-4xl mx-auto">
-                    <div className="bg-gradient-to-br from-sky-50 to-white rounded-2xl border-2 border-sky-100 p-6 md:p-10 relative">
-                        <FaQuoteLeft className="text-sky-300 text-3xl mb-4" />
+                    <div className="bg-white border-l-4 border-blue-700 shadow-sm p-6 md:p-8 relative rounded-sm">
+                        <FaQuoteLeft className="text-slate-100 text-3xl absolute top-6 left-6" />
 
-                        <div className="mb-6">
-                            <p className="text-lg md:text-xl text-gray-700 leading-relaxed italic">
+                        <div className="mb-6 relative z-10 pt-4 px-4 md:px-8">
+                            <p className="text-base text-gray-700 leading-relaxed italic">
                                 &quot;{currentTestimonial.content}&quot;
                             </p>
                         </div>
 
-                        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pt-6 border-t border-sky-200">
+                        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pt-6 border-t border-gray-100 mt-4 px-4 md:px-8">
                             <div className="flex items-center gap-4">
-                                <div className="w-12 h-12 rounded-full bg-sky-600 flex items-center justify-center text-white font-bold text-lg shadow-md">
+                                <div className="w-12 h-12 rounded bg-blue-900 flex items-center justify-center text-white font-bold text-lg">
                                     {currentTestimonial.name.charAt(0)}
                                 </div>
                                 <div>
@@ -67,17 +67,17 @@ export const TestimonialsCarousel: React.FC = () => {
                             <div className="flex items-center gap-2">
                                 <button
                                     onClick={goToPrevious}
-                                    className="w-10 h-10 rounded-lg bg-white border-2 border-sky-200 hover:border-sky-400 hover:bg-sky-50 flex items-center justify-center text-sky-600 transition-all"
+                                    className="w-10 h-10 rounded border border-gray-200 bg-white hover:border-blue-800 hover:text-blue-900 flex items-center justify-center text-gray-500 transition-all"
                                     aria-label="Previous testimonial"
                                 >
-                                    <FaChevronLeft size={16} />
+                                    <FaChevronLeft size={14} />
                                 </button>
                                 <button
                                     onClick={goToNext}
-                                    className="w-10 h-10 rounded-lg bg-white border-2 border-sky-200 hover:border-sky-400 hover:bg-sky-50 flex items-center justify-center text-sky-600 transition-all"
+                                    className="w-10 h-10 rounded border border-gray-200 bg-white hover:border-blue-800 hover:text-blue-900 flex items-center justify-center text-gray-500 transition-all"
                                     aria-label="Next testimonial"
                                 >
-                                    <FaChevronRight size={16} />
+                                    <FaChevronRight size={14} />
                                 </button>
                             </div>
                         </div>
@@ -89,7 +89,7 @@ export const TestimonialsCarousel: React.FC = () => {
                                     key={idx}
                                     onClick={() => setCurrentIndex(idx)}
                                     className={`h-2 rounded-full transition-all ${
-                                        idx === currentIndex ? 'w-8 bg-sky-600' : 'w-2 bg-sky-200 hover:bg-sky-400'
+                                        idx === currentIndex ? 'w-8 bg-blue-900' : 'w-2 bg-gray-300 hover:bg-gray-400'
                                     }`}
                                     aria-label={`Go to testimonial ${idx + 1}`}
                                 />

@@ -18,22 +18,22 @@ export default function AboutPage() {
         {
             icon: FaCode,
             title: "Customized Programming",
-            description: "Tailored software solutions designed specifically for your business needs"
+            description: "Tailored software solutions designed specifically for your business needs."
         },
         {
             icon: FaDatabase,
             title: "Database Design",
-            description: "Robust and scalable database architecture for optimal performance"
+            description: "Robust and scalable database architecture for optimal performance."
         },
         {
             icon: FaServer,
             title: "Client-Server Applications",
-            description: "Efficient client-server solutions for enterprise-level operations"
+            description: "Efficient client-server solutions for enterprise-level operations."
         },
         {
             icon: FaGlobe,
             title: "Internet/Intranet Development",
-            description: "Modern web applications and internal network solutions"
+            description: "Modern web applications and internal network solutions."
         }
     ];
 
@@ -41,62 +41,62 @@ export default function AboutPage() {
         {
             icon: FaAward,
             title: "Quality & Reliability",
-            description: "We are committed to delivering high-quality, reliable software applications that exceed expectations"
+            description: "We are committed to delivering high-quality, reliable software applications that exceed expectations."
         },
         {
             icon: FaUsers,
             title: "Expert Team",
-            description: "Our diverse team of professionals brings expertise from various backgrounds, expanding creative potential"
+            description: "Our diverse team of professionals brings expertise from various backgrounds, expanding creative potential."
         },
         {
             icon: FaRocket,
             title: "Innovation",
-            description: "We stay ahead with the latest development technologies and methodologies"
+            description: "We stay ahead with the latest development technologies and methodologies."
         },
         {
             icon: FaCertificate,
             title: "Years of Experience",
-            description: "Over 15 years of excellence in software development and outsourcing services"
+            description: "Over 15 years of excellence in software development and outsourcing services."
         }
     ];
 
     return (
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen bg-slate-50">
             {/* Hero Section */}
-            <div className="bg-gradient-to-br from-sky-50 via-white to-sky-50/30 pt-20 md:pt-28 pb-12">
+            <div className="bg-white border-b border-gray-200 pt-24 md:pt-32 pb-16 md:pb-20">
                 <Container>
                     <div className="text-center max-w-4xl mx-auto">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-sky-100 rounded-full mb-4">
-                            <FaLightbulb className="text-sky-600" />
-                            <span className="text-sm font-semibold text-sky-700">About Us</span>
+                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 border border-gray-200 rounded mb-6">
+                            <FaLightbulb className="text-blue-800" />
+                            <span className="text-sm font-bold tracking-wide text-blue-950 uppercase">About Us</span>
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                            Crescent <span className="text-sky-600">Technosoft</span>
+                        <h1 className="text-4xl md:text-5xl font-extrabold text-blue-950 mb-6 tracking-tight">
+                            Crescent Technosoft
                         </h1>
-                        <p className="text-lg text-gray-600 leading-relaxed">
-                            A rapidly growing customized software development and outsourcing company with headquarters in Chennai, India
+                        <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
+                            A rapidly growing customized software development and outsourcing company with headquarters in Chennai, India.
                         </p>
                     </div>
                 </Container>
             </div>
 
-            <Container className="py-12 md:py-16">
+            <Container className="py-16 md:py-24">
                 {/* Company Overview */}
-                <div className="mb-16">
+                <div className="mb-20 md:mb-24">
                     <div className="max-w-4xl mx-auto">
-                        <div className="bg-white rounded-xl border-2 border-sky-100 p-6 md:p-8 shadow-md">
+                        <div className="bg-white rounded-sm border border-gray-200 p-8 md:p-12 shadow-sm">
                             <div className="prose prose-lg max-w-none">
-                                <p className="text-gray-700 leading-relaxed mb-4 text-base">
+                                <p className="text-gray-700 leading-relaxed mb-6 text-lg">
                                     Crescent Technosoft is a rapidly growing customized software development and outsourcing company with headquarters 
                                     in Chennai, India. We specialize in the development of customized software applications and offshore software 
                                     outsourcing services.
                                 </p>
-                                <p className="text-gray-700 leading-relaxed mb-4 text-base">
+                                <p className="text-gray-700 leading-relaxed mb-6 text-lg">
                                     Specifically, our company carries out customized programming, database design, client-server and internet/intranet 
                                     software applications development. Over the years we have managed to build a solid team of software outsourcing 
                                     professionals that come from various backgrounds and expand the creative potential of the company.
                                 </p>
-                                <p className="text-gray-700 leading-relaxed text-base">
+                                <p className="text-gray-700 leading-relaxed text-lg">
                                     The expertise that we possess embraces a wide range of customized programming skills involving the latest and most 
                                     effective development technologies. This defines to a great extent, the quality and reliability of the customized 
                                     software applications that we develop.
@@ -107,29 +107,40 @@ export default function AboutPage() {
                 </div>
 
                 {/* Our Services */}
-                <div className="mb-16">
-                    <div className="text-center mb-8">
-                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+                <div className="mb-20 md:mb-24">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl md:text-4xl font-extrabold text-blue-950 mb-4 tracking-tight">
                             Our Core Services
                         </h2>
-                        <p className="text-gray-600 max-w-2xl mx-auto">
-                            Comprehensive software development services tailored to your business needs
+                        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                            Comprehensive software development services tailored to your business needs.
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto items-start pb-8 md:pb-16">
                         {services.map((service, index) => {
                             const Icon = service.icon;
                             return (
                                 <div 
                                     key={index} 
-                                    className="bg-white rounded-xl border-2 border-sky-100 hover:border-sky-300 p-5 md:p-6 hover:shadow-lg transition-all"
+                                    className={`group bg-white border border-gray-200 p-10 shadow-sm hover:shadow-xl hover:border-blue-900 transition-all duration-500 ${
+                                        index % 2 === 1 ? 'md:mt-16' : ''
+                                    }`}
                                 >
-                                    <div className="w-12 h-12 bg-gradient-to-br from-sky-500 to-sky-600 rounded-lg flex items-center justify-center mb-3 shadow-md">
-                                        <Icon className="text-white text-xl" />
+                                    <div className="flex justify-between items-start mb-8">
+                                        <div className="w-16 h-16 bg-slate-50 text-blue-900 border border-gray-200 flex items-center justify-center rounded-sm group-hover:bg-blue-900 group-hover:text-white transition-all duration-500">
+                                            <Icon className="text-3xl" />
+                                        </div>
+                                        <span className="text-6xl font-black text-slate-100 select-none group-hover:text-blue-50 transition-colors duration-500">
+                                            0{index + 1}
+                                        </span>
                                     </div>
-                                    <h3 className="text-lg font-bold text-gray-900 mb-2">{service.title}</h3>
-                                    <p className="text-sm text-gray-600 leading-relaxed">{service.description}</p>
+                                    <h3 className="text-2xl font-extrabold text-blue-950 mb-4 tracking-tight group-hover:text-blue-900 transition-colors">
+                                        {service.title}
+                                    </h3>
+                                    <p className="text-lg text-gray-600 leading-relaxed">
+                                        {service.description}
+                                    </p>
                                 </div>
                             );
                         })}
@@ -137,25 +148,25 @@ export default function AboutPage() {
                 </div>
 
                 {/* Technologies */}
-                <div className="mb-16">
-                    <div className="text-center mb-8">
-                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+                <div className="mb-20 md:mb-24">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl md:text-4xl font-extrabold text-blue-950 mb-4 tracking-tight">
                             Our Technology Expertise
                         </h2>
-                        <p className="text-gray-600 max-w-2xl mx-auto">
-                            Latest and most effective development technologies
+                        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                            Latest and most effective development frameworks and methodologies.
                         </p>
                     </div>
 
-                    <div className="bg-gradient-to-br from-sky-50 to-white rounded-xl border-2 border-sky-100 p-6 md:p-8">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                    <div className="bg-white rounded-sm border border-gray-200 p-8 md:p-12 max-w-5xl mx-auto shadow-sm">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                             {technologies.map((tech, index) => (
                                 <div 
                                     key={index} 
-                                    className="flex items-center gap-2 p-3 bg-white rounded-lg border border-sky-200 hover:border-sky-400 hover:shadow-sm transition-all"
+                                    className="flex items-center gap-4 p-5 bg-slate-50 rounded-sm border border-gray-200 hover:border-blue-900 hover:shadow-md transition-all duration-300 group"
                                 >
-                                    <FaCheckCircle className="text-sky-600 flex-shrink-0" size={16} />
-                                    <span className="text-gray-700 text-sm font-medium">{tech}</span>
+                                    <FaCheckCircle className="text-blue-900 flex-shrink-0 group-hover:scale-110 transition-transform" size={20} />
+                                    <span className="text-gray-900 text-base font-bold tracking-tight">{tech}</span>
                                 </div>
                             ))}
                         </div>
@@ -163,57 +174,59 @@ export default function AboutPage() {
                 </div>
 
                 {/* Our Values */}
-                <div className="mb-16">
-                    <div className="text-center mb-8">
-                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+                <div className="mb-20 md:mb-24">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl md:text-4xl font-extrabold text-blue-950 mb-4 tracking-tight">
                             Why Choose Us
                         </h2>
-                        <p className="text-gray-600 max-w-2xl mx-auto">
-                            The principles and strengths that define our approach
+                        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                            The principles and strengths that define our approach to software engineering.
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 max-w-6xl mx-auto">
                         {values.map((value, index) => {
                             const Icon = value.icon;
                             return (
                                 <div 
                                     key={index} 
-                                    className="bg-white rounded-xl border-2 border-sky-100 hover:border-sky-300 p-5 hover:shadow-lg transition-all text-center"
+                                    className="bg-white rounded-sm border border-gray-200 p-6 hover:-translate-y-1 hover:shadow-md transition-all duration-300 text-center"
                                 >
-                                    <div className="w-12 h-12 bg-gradient-to-br from-sky-500 to-sky-600 rounded-xl flex items-center justify-center mx-auto mb-3 shadow-md">
-                                        <Icon className="text-white text-xl" />
+                                    <div className="w-14 h-14 bg-slate-50 text-blue-800 border border-gray-100 rounded flex items-center justify-center mx-auto mb-5">
+                                        <Icon className="text-2xl" />
                                     </div>
-                                    <h3 className="text-base font-bold text-gray-900 mb-2">{value.title}</h3>
-                                    <p className="text-xs text-gray-600 leading-relaxed">{value.description}</p>
+                                    <h3 className="text-lg font-bold text-gray-900 mb-3 tracking-tight">{value.title}</h3>
+                                    <p className="text-sm text-gray-600 leading-relaxed">{value.description}</p>
                                 </div>
                             );
                         })}
                     </div>
                 </div>
+            </Container>
 
-                {/* CTA Section */}
-                <div className="bg-gradient-to-br from-sky-600 to-sky-700 rounded-2xl p-8 md:p-10 text-center text-white shadow-xl">
-                    <h2 className="text-2xl md:text-3xl font-bold mb-3">
+            {/* CTA Section */}
+            <div className="bg-blue-950 border-t border-blue-900 py-16 md:py-24 text-center mt-12 md:mt-16 w-full px-4">
+                <div className="max-w-3xl mx-auto">
+                    <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">
                         Ready to Transform Your Business?
                     </h2>
-                    <p className="text-sky-100 mb-6 max-w-2xl mx-auto">
-                        Get in touch with our team to discuss how we can create a custom solution for your organization's unique challenges
+                    <p className="text-lg md:text-xl text-blue-100 mb-10 leading-relaxed font-medium">
+                        Get in touch with our team to discuss how we can create a custom solution for your organization's unique challenges.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                         <Link href="/contact">
-                            <button className="w-full sm:w-auto px-8 py-3.5 bg-white text-sky-600 font-semibold rounded-lg hover:bg-sky-50 hover:shadow-lg transition-all duration-200 active:scale-95">
+                            <button className="w-full sm:w-auto px-8 py-4 bg-white text-blue-950 text-base font-bold tracking-wide rounded-sm hover:bg-gray-100 transition-colors">
                                 Contact Us Today
                             </button>
                         </Link>
                         <Link href="/services/hospital">
-                            <button className="w-full sm:w-auto px-8 py-3.5 bg-sky-800 text-white font-semibold rounded-lg border-2 border-white/30 hover:bg-sky-900 hover:border-white hover:shadow-lg transition-all duration-200 active:scale-95">
+                            <button className="w-full sm:w-auto px-8 py-4 bg-blue-900 text-white text-base font-bold tracking-wide rounded-sm border border-blue-800 hover:bg-blue-800 transition-colors">
                                 View Our Solutions
                             </button>
                         </Link>
                     </div>
                 </div>
-            </Container>
+            </div>
         </div>
     );
 }

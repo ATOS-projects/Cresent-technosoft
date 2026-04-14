@@ -21,27 +21,27 @@ export const ClientsSection = () => {
     return (
         <section className="py-12 md:py-16 bg-white">
             <Container>
-                <div className="text-center mb-8 md:mb-12">
-                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3">
-                        Trusted by Healthcare Leaders
+                <div className="text-center mb-10">
+                    <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+                        Trusted by Healthcare Facilities
                     </h2>
-                    <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto px-4">
-                        We proudly serve 60+ clients across India, UAE, Sri Lanka, and Nigeria
+                    <p className="text-gray-600 max-w-2xl mx-auto">
+                        Over 60+ top hospitals and clinics rely on our industry-leading solutions.
                     </p>
                 </div>
 
                 {/* Client Logos Grid */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6 items-center">
+                <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-8 md:gap-12 items-center max-w-6xl mx-auto justify-items-center">
                     {clients.map((client, idx) => (
                         <div 
                             key={idx} 
-                            className="h-20 md:h-24 flex items-center justify-center p-3 md:p-4 bg-white rounded-lg border border-gray-100 hover:border-sky-300 hover:shadow-md transition-shadow"
+                            className="flex items-center justify-center p-2 w-full hover:-translate-y-0.5 transition-transform duration-200"
                         >
                             <Image
                                 src={client.image}
                                 alt={client.name}
-                                width={100}
-                                height={50}
+                                width={140}
+                                height={60}
                                 className="object-contain max-h-12 md:max-h-14 w-auto"
                                 loading="lazy"
                             />

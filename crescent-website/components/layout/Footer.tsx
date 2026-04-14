@@ -9,18 +9,18 @@ export const Footer: React.FC = () => {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="relative mt-20 pt-16 pb-8 bg-gray-50 border-t border-sky-100">
+        <footer className="relative bg-slate-50 border-t border-gray-200 pt-16 pb-8">
             <Container>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
                     {/* Company Info */}
                     <div className="space-y-5">
                         <Link href="/" className="flex items-center gap-3 group w-fit">
-                            <div className="flex items-center justify-center transition-transform group-hover:scale-105">
-                                <Image src="/Assets/logo.webp" alt="Crescent Technosofts" width={44} height={44} className="object-contain" />
+                            <div className="flex items-center justify-center transition-transform group-hover:scale-105 shrink-0">
+                                <Image src="/Assets/logo.webp" alt="Crescent Technosoft" width={64} height={64} className="object-contain" />
                             </div>
                             <div className="flex flex-col">
-                                <span className="text-xl font-bold text-sky-600">Crescent</span>
-                                <span className="text-[9px] text-sky-500 font-medium tracking-wider uppercase">Technosofts</span>
+                                <span className="text-xl font-bold text-blue-900">Crescent</span>
+                                <span className="text-[10px] text-blue-800 font-bold tracking-[0.2em] uppercase">Technosoft</span>
                             </div>
                         </Link>
                         <p className="text-sm leading-relaxed text-gray-600">
@@ -38,7 +38,7 @@ export const Footer: React.FC = () => {
                                     href={href} 
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-9 h-9 rounded-lg flex items-center justify-center text-gray-600 hover:text-sky-600 border border-sky-200 hover:border-sky-400 transition-colors" 
+                                    className="w-9 h-9 rounded flex items-center justify-center text-gray-500 hover:text-blue-900 border border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-colors" 
                                     aria-label={label}
                                 >
                                     <Icon size={16} />
@@ -49,13 +49,13 @@ export const Footer: React.FC = () => {
 
                     {/* Services */}
                     <div>
-                        <h3 className="font-semibold text-base mb-4 text-gray-900">Our Systems</h3>
+                        <h3 className="font-bold text-base mb-4 text-gray-900">Our Systems</h3>
                         <ul className="space-y-2.5">
                             {SERVICES.slice(0, 6).map((service) => (
                                 <li key={service.id}>
                                     <Link
                                         href={service.href}
-                                        className="text-gray-600 hover:text-sky-600 text-sm transition-colors block">
+                                        className="text-gray-600 hover:text-blue-800 text-sm transition-colors block">
                                         {service.title}
                                     </Link>
                                 </li>
@@ -65,7 +65,7 @@ export const Footer: React.FC = () => {
 
                     {/* Quick Links */}
                     <div>
-                        <h3 className="font-semibold text-base mb-4 text-gray-900">Company</h3>
+                        <h3 className="font-bold text-base mb-4 text-gray-900">Company</h3>
                         <ul className="space-y-2.5">
                             {[
                                 { name: 'About Us', path: '/about' },
@@ -75,7 +75,7 @@ export const Footer: React.FC = () => {
                                 { name: 'Contact Us', path: '/contact' }
                             ].map((link) => (
                                 <li key={link.name}>
-                                    <Link href={link.path} className="text-gray-600 hover:text-sky-600 text-sm transition-colors block">
+                                    <Link href={link.path} className="text-gray-600 hover:text-blue-800 text-sm transition-colors block">
                                         {link.name}
                                     </Link>
                                 </li>
@@ -85,33 +85,33 @@ export const Footer: React.FC = () => {
 
                     {/* Contact Info */}
                     <div>
-                        <h3 className="font-semibold text-base mb-4 text-gray-900">Contact</h3>
+                        <h3 className="font-bold text-base mb-4 text-gray-900">Contact</h3>
                         <ul className="space-y-4">
                             <li className="flex items-start gap-3">
-                                <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 border border-sky-200">
-                                    <FaPhone className="text-sky-600" size={14} />
+                                <div className="w-9 h-9 rounded flex items-center justify-center flex-shrink-0 border border-gray-200 bg-white">
+                                    <FaPhone className="text-blue-800" size={14} />
                                 </div>
                                 <div className="space-y-1 pt-1.5">
                                     {CONTACT_INFO.phones.slice(0, 2).map((phone, index) => (
                                         <a
                                             key={index}
                                             href={`tel:${phone.replace(/\s/g, '')}`}
-                                            className="block text-gray-700 hover:text-sky-600 text-sm transition-colors">
+                                            className="block text-gray-700 hover:text-blue-800 text-sm transition-colors">
                                             {phone}
                                         </a>
                                     ))}
                                 </div>
                             </li>
                             <li className="flex items-start gap-3">
-                                <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 border border-sky-200">
-                                    <FaEnvelope className="text-sky-600" size={14} />
+                                <div className="w-9 h-9 rounded flex items-center justify-center flex-shrink-0 border border-gray-200 bg-white">
+                                    <FaEnvelope className="text-blue-800" size={14} />
                                 </div>
                                 <div className="space-y-1 pt-1.5">
                                     {CONTACT_INFO.emails.slice(0, 1).map((email, index) => (
                                         <a
                                             key={index}
                                             href={`mailto:${email}`}
-                                            className="block text-gray-700 hover:text-sky-600 text-sm transition-colors">
+                                            className="block text-gray-700 hover:text-blue-800 text-sm transition-colors">
                                             {email}
                                         </a>
                                     ))}
@@ -119,8 +119,8 @@ export const Footer: React.FC = () => {
                             </li>
                             {CONTACT_INFO.address && (
                                 <li className="flex items-start gap-3">
-                                    <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 border border-sky-200">
-                                        <FaMapMarkerAlt className="text-sky-600" size={14} />
+                                    <div className="w-9 h-9 rounded flex items-center justify-center flex-shrink-0 border border-gray-200 bg-white">
+                                        <FaMapMarkerAlt className="text-blue-800" size={14} />
                                     </div>
                                     <span className="text-gray-700 text-sm pt-2 leading-relaxed">{CONTACT_INFO.address}</span>
                                 </li>
@@ -130,16 +130,16 @@ export const Footer: React.FC = () => {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="pt-8 mt-8 border-t border-sky-100">
+                <div className="pt-8 mt-8 border-t border-gray-200">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                         <p className="text-gray-600 text-sm text-center md:text-left">
-                            © {currentYear} Crescent Technosofts. All rights reserved.
+                            © {currentYear} Crescent Technosoft. All rights reserved.
                         </p>
                         <div className="flex gap-6">
-                            <Link href="/privacy" className="text-gray-600 hover:text-sky-600 text-sm transition-colors">
+                            <Link href="/privacy" className="text-gray-600 hover:text-blue-800 text-sm transition-colors block">
                                 Privacy Policy
                             </Link>
-                            <Link href="/terms" className="text-gray-600 hover:text-sky-600 text-sm transition-colors">
+                            <Link href="/terms" className="text-gray-600 hover:text-blue-800 text-sm transition-colors block">
                                 Terms of Service
                             </Link>
                         </div>

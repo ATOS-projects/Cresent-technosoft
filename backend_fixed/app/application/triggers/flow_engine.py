@@ -157,8 +157,8 @@ Please share your contact details and we'll reach out shortly:
 ❓ Your Query (briefly)
 
 Or reach us directly:
-📧 Email: info@crescenttechnosofts.com
-🌐 Website: www.crescenttechnosofts.com
+📧 Email: info@crescenttechnosoft.com
+🌐 Website: www.crescenttechnosoft.com
 📍 Chennai, Tamil Nadu, India"""
 
 CONTACT_SAVED_RESPONSE = """✅ *Thank you!*
