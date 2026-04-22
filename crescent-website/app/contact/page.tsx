@@ -12,12 +12,40 @@ export default function ContactPage() {
         email: '',
         phone: '',
         organization: '',
+        inquiryType: 'General Inquiry',
         message: ''
     });
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<{type: 'success' | 'error' | null, message: string}>({ type: null, message: '' });
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        alert('Thank you for contacting us! We will get back to you soon.');
+        setIsSubmitting(true);
+        setSubmitStatus({ type: null, message: '' });
+
+        try {
+            const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    ...formData,
+                    company: formData.organization,
+                    source: 'Contact Page'
+                })
+            });
+
+            if (!res.ok) throw new Error('Failed to submit form');
+            
+            setSubmitStatus({ type: 'success', message: 'Thank you for contacting us! We will get back to you shortly.' });
+            setFormData({ name: '', email: '', phone: '', organization: '', inquiryType: 'General Inquiry', message: '' });
+        } catch (error) {
+            setSubmitStatus({ type: 'error', message: 'Something went wrong. Please try again later or contact us directly via phone.' });
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -121,9 +149,33 @@ export default function ContactPage() {
                                 </div>
 
                                 <div>
+                                    <label htmlFor="inquiryType" className="block text-sm font-bold text-blue-950 mb-2">
+                                        Support Category <span className="text-red-500">*</span>
+                                    </label>
+                                    <select
+                                        id="inquiryType"
+                                        name="inquiryType"
+                                        required
+                                        value={formData.inquiryType || 'General Inquiry'}
+                                        onChange={(e: any) => handleChange(e)}
+                                        className="w-full px-4 py-3 rounded-sm border border-gray-300 focus:ring-2 focus:ring-blue-900/20 focus:border-blue-900 outline-none transition-all bg-slate-50 focus:bg-white text-blue-950"
+                                    >
+                                        <option value="General Inquiry">General Inquiry</option>
+                                        <option value="Sales & Demo">Sales & Product Demo</option>
+                                        <option value="Technical Support">Technical Support</option>
+                                        <option value="Partnership">Partnership</option>
+                                        <option value="Billing & Finance">Billing & Finance</option>
+                                        <option value="Other Query">Other Query</option>
+                                    </select>
+                                </div>
+
+                                <div>
                                     <label htmlFor="message" className="block text-sm font-bold text-blue-950 mb-2">
                                         Message <span className="text-red-500">*</span>
                                     </label>
+                                    <p className="text-xs text-blue-800 mb-3 bg-blue-50 p-2 rounded-sm border border-blue-100">
+                                        Your message, along with your registered name, email, and phone number, will be sent directly to the selected team.
+                                    </p>
                                     <textarea
                                         id="message"
                                         name="message"
@@ -132,13 +184,33 @@ export default function ContactPage() {
                                         value={formData.message}
                                         onChange={handleChange}
                                         className="w-full px-4 py-3 rounded-sm border border-gray-300 focus:ring-2 focus:ring-blue-900/20 focus:border-blue-900 outline-none transition-all resize-none bg-slate-50 focus:bg-white text-blue-950 placeholder-gray-400"
-                                        placeholder="Tell us about your project or inquiry..."
+                                        placeholder={
+                                            formData.inquiryType === 'Other Query' 
+                                                ? "Please write your query here. Remember, your email, name, and phone are attached automatically and will be routed directly to the team for review."
+                                                : "Tell us about your project or inquiry..."
+                                        }
                                     />
                                 </div>
 
-                                <button type="submit" className="w-full px-8 py-3.5 bg-blue-950 text-white font-bold tracking-wide rounded-sm hover:bg-blue-900 transition-colors border border-blue-900 flex items-center justify-center gap-2">
+                                {submitStatus.type === 'success' && (
+                                    <div className="p-4 bg-green-50 border border-green-200 text-green-800 rounded-sm text-sm font-medium">
+                                        {submitStatus.message}
+                                    </div>
+                                )}
+
+                                {submitStatus.type === 'error' && (
+                                    <div className="p-4 bg-red-50 border border-red-200 text-red-800 rounded-sm text-sm font-medium">
+                                        {submitStatus.message}
+                                    </div>
+                                )}
+
+                                <button 
+                                    type="submit" 
+                                    disabled={isSubmitting}
+                                    className={`w-full px-8 py-3.5 ${isSubmitting ? 'bg-blue-900/50 cursor-not-allowed' : 'bg-blue-950 hover:bg-blue-900'} text-white font-bold tracking-wide rounded-sm transition-colors border border-blue-900 flex items-center justify-center gap-2`}
+                                >
                                     <FaPaperPlane />
-                                    <span>Send Message</span>
+                                    <span>{isSubmitting ? 'Sending Request...' : 'Send Message'}</span>
                                 </button>
                             </form>
                         </div>

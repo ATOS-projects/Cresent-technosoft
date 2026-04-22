@@ -96,10 +96,10 @@ export default function BillingPage() {
     return (
         <div className="min-h-screen bg-white">
             {/* Hero Section */}
-            <div className="bg-gradient-to-br from-sky-50 via-white to-blue-50 pt-24 md:pt-32 pb-16">
+            <div className="bg-white pt-24 md:pt-32 pb-16">
                 <Container>
                     <div className="text-center max-w-4xl mx-auto">
-                        <div className="w-20 h-20 bg-sky-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                        <div className="w-20 h-20 bg-blue-950 rounded-sm flex items-center justify-center mx-auto mb-6 shadow-lg">
                             <Icon className="text-white text-4xl" />
                         </div>
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900">
@@ -110,12 +110,12 @@ export default function BillingPage() {
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                             <Link href="/contact">
-                                <button className="px-8 py-4 bg-sky-600 text-white font-semibold rounded-lg hover:bg-sky-700 shadow-lg hover:shadow-xl transition-all">
+                                <button className="px-8 py-4 bg-blue-950 text-white font-semibold rounded-sm hover:bg-blue-900 shadow-lg hover:shadow-xl transition-all">
                                     Request a Demo
                                 </button>
                             </Link>
                             <Link href="/contact">
-                                <button className="px-8 py-4 bg-white text-sky-600 font-semibold rounded-lg border-2 border-sky-600 hover:bg-sky-50 transition-all">
+                                <button className="px-8 py-4 bg-white text-blue-950 font-semibold rounded-sm border-2 border-blue-900 hover:bg-slate-50 transition-all">
                                     Contact Sales
                                 </button>
                             </Link>
@@ -139,8 +139,8 @@ export default function BillingPage() {
                     {modules.map((module, index) => {
                         const ModuleIcon = module.icon;
                         return (
-                            <div key={index} className="bg-white rounded-xl border-2 border-sky-100 hover:border-sky-300 p-6 hover:shadow-lg transition-all group">
-                                <div className="w-14 h-14 bg-sky-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <div key={index} className="bg-white rounded-sm border border-gray-200 hover:border-blue-900 p-6 hover:shadow-lg transition-all group">
+                                <div className="w-14 h-14 bg-blue-950 rounded-sm flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                                     <ModuleIcon className="text-white text-2xl" />
                                 </div>
                                 <h3 className="text-lg font-bold text-gray-900 mb-2">{module.title}</h3>
@@ -152,7 +152,7 @@ export default function BillingPage() {
             </Container>
 
             {/* Key Benefits Section */}
-            <div className="bg-gradient-to-br from-sky-50 to-white py-16 md:py-20">
+            <div className="bg-slate-50 border-t border-gray-200 py-16 md:py-20">
                 <Container>
                     <div className="text-center mb-12">
                         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -165,8 +165,8 @@ export default function BillingPage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
                         {benefits.map((benefit, index) => (
-                            <div key={index} className="flex items-start gap-3 bg-white rounded-lg border border-sky-200 p-4 hover:border-sky-400 hover:shadow-md transition-all">
-                                <FaCheckCircle className="text-sky-600 flex-shrink-0 mt-1" size={20} />
+                            <div key={index} className="flex items-start gap-3 bg-white rounded-sm border border-gray-200 p-4 hover:border-blue-900 hover:shadow-md transition-all">
+                                <FaCheckCircle className="text-blue-950 flex-shrink-0 mt-1" size={20} />
                                 <span className="text-gray-700 font-medium">{benefit}</span>
                             </div>
                         ))}
@@ -185,11 +185,11 @@ export default function BillingPage() {
                     </p>
                 </div>
 
-                <div className="bg-white rounded-2xl border-2 border-sky-100 p-8 md:p-12 shadow-lg">
+                <div className="bg-white rounded-sm border border-gray-200 p-8 md:p-12 shadow-lg">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {capabilities.map((capability, index) => (
                             <div key={index} className="flex items-center gap-3">
-                                <div className="w-2 h-2 bg-sky-600 rounded-full flex-shrink-0"></div>
+                                <div className="w-2 h-2 bg-blue-950 rounded-full flex-shrink-0"></div>
                                 <span className="text-gray-700">{capability}</span>
                             </div>
                         ))}
@@ -198,24 +198,24 @@ export default function BillingPage() {
             </Container>
 
             {/* CTA Section */}
-            <div className="bg-gradient-to-br from-sky-600 to-sky-700 py-16 md:py-20">
+            <div className="bg-blue-950 border-t border-blue-900 gap-10 py-16 md:py-20">
                 <Container>
                     <div className="text-center text-white max-w-3xl mx-auto">
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
                             Ready to Streamline Your Billing?
                         </h2>
-                        <p className="text-xl text-sky-100 mb-8 leading-relaxed">
+                        <p className="text-xl text-slate-100 mb-8 leading-relaxed">
                             Start creating professional invoices in minutes. Try our billing software free for 30 days and experience the difference!
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                             <Link href="/contact">
-                                <button className="px-8 py-4 bg-white text-sky-600 font-semibold rounded-lg hover:bg-sky-50 shadow-lg hover:shadow-xl transition-all flex items-center gap-2">
+                                <button className="px-8 py-4 bg-white text-blue-950 font-semibold rounded-sm hover:bg-slate-50 shadow-lg hover:shadow-xl transition-all flex items-center gap-2">
                                     <span>Contact Us Now</span>
                                     <FaArrowRight />
                                 </button>
                             </Link>
                             <Link href="tel:+914442865141">
-                                <button className="px-8 py-4 bg-sky-800 text-white font-semibold rounded-lg border-2 border-white/30 hover:bg-sky-900 hover:border-white transition-all flex items-center gap-2">
+                                <button className="px-8 py-4 bg-blue-900 text-white font-semibold rounded-sm border-2 border-white/30 hover:bg-blue-950 hover:border-white transition-all flex items-center gap-2">
                                     <FaPhone />
                                     <span>Call +91 44 4286 5141</span>
                                 </button>

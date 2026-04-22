@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import CallButton from "@/components/ui/CallButton";
+import { ChatWidget } from "@/components/ui/ChatWidget";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -37,6 +38,7 @@ export default function RootLayout({
         <Footer />
         <WhatsAppButton />
         <CallButton />
+        <ChatWidget />
         <script
           dangerouslySetInnerHTML={{
             __html: `
