@@ -17,10 +17,41 @@ export default function DemoPage() {
         service: '',
         message: ''
     });
+    
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error', message: string } | null>(null);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        alert('Thank you! We will contact you shortly to schedule your demo.');
+        setIsSubmitting(true);
+        setSubmitStatus(null);
+
+        try {
+            const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    phone: formData.phone,
+                    inquiryType: `Demo Request`,
+                    source: "Demo Page",
+                    message: `Service of Interest: ${formData.service}\nCompany: ${formData.company}\n\nAdditional Details:\n${formData.message}`
+                })
+            });
+
+            if (res.ok) {
+                setSubmitStatus({ type: 'success', message: 'Thank you! We will contact you shortly to schedule your demo.' });
+                setFormData({ name: '', email: '', phone: '', company: '', service: '', message: '' });
+                setTimeout(() => setSubmitStatus(null), 5000);
+            } else {
+                throw new Error('Failed to send request');
+            }
+        } catch (error) {
+            setSubmitStatus({ type: 'error', message: 'Something went wrong. Please try again later.' });
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -216,9 +247,19 @@ export default function DemoPage() {
                                             />
                                         </div>
 
+                                        {submitStatus && (
+                                            <div className={`p-4 rounded-xl text-center text-sm font-semibold transition-all shadow-inner my-4 ${
+                                                submitStatus.type === 'success' 
+                                                    ? 'bg-green-500/10 text-green-400 border border-green-500/30' 
+                                                    : 'bg-red-500/10 text-red-400 border border-red-500/30'
+                                            }`}>
+                                                {submitStatus.message}
+                                            </div>
+                                        )}
+
                                         <div className="pt-4">
-                                            <Button type="submit" variant="neon" size="lg" icon={<FaRocket className="text-xl" />} className="w-full py-5 text-xl font-bold rounded-xl tracking-wide">
-                                                Request Free Demo
+                                            <Button type="submit" disabled={isSubmitting} variant="neon" size="lg" icon={<FaRocket className="text-xl" />} className="w-full py-5 text-xl font-bold rounded-xl tracking-wide disabled:opacity-70 disabled:cursor-not-allowed">
+                                                {isSubmitting ? 'Requesting...' : 'Request Free Demo'}
                                             </Button>
                                         </div>
 

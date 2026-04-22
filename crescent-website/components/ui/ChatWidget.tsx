@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaComment, FaTimes, FaRobot, FaTimesCircle } from 'react-icons/fa';
+import { FaComment, FaTimes, FaRobot, FaPaperPlane } from 'react-icons/fa';
 import Link from 'next/link';
 
 type Option = {
@@ -26,7 +26,8 @@ const DECISION_TREE: DecisionTree = {
         options: [
             { label: "Software Products", nextNodeId: "products" },
             { label: "Partner Program", nextNodeId: "partner" },
-            { label: "Contact Sales", nextNodeId: "contact" }
+            { label: "Contact Sales", nextNodeId: "contact" },
+            { label: "Other Query", nextNodeId: "custom_query" }
         ]
     },
     products: {
@@ -80,6 +81,11 @@ const DECISION_TREE: DecisionTree = {
             { label: "🔙 Start Over", nextNodeId: "start" }
         ]
     },
+    // State dedicated to manual user typing
+    custom_query: {
+        message: "I understand. Please type your query below, along with your email address, and our support team will get directly in touch with you.",
+        options: []
+    }
 };
 
 type MessageHistory = {
@@ -93,6 +99,9 @@ type MessageHistory = {
 export const ChatWidget: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [messages, setMessages] = useState<MessageHistory[]>([]);
+    const [inputText, setInputText] = useState('');
+    const [activeNode, setActiveNode] = useState('start');
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const messagesEndRef = useRef<HTMLDivElement>(null);
     const [messageCount, setMessageCount] = useState(0);
 
@@ -170,11 +179,77 @@ export const ChatWidget: React.FC = () => {
             text: option.label
         }]);
 
+        if (option.nextNodeId) {
+            setActiveNode(option.nextNodeId);
+        }
+
         // Process next step
         if (option.nextNodeId) {
             setTimeout(() => {
                 pushBotNode(option.nextNodeId!);
             }, 500);
+        }
+    };
+
+    const handleSendMessage = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!inputText.trim()) return;
+
+        const userMsg = inputText.trim();
+        setInputText('');
+        
+        // Push user message to UI immediately
+        setMessages(prev => [...prev, {
+            id: Date.now() + Math.random(),
+            sender: 'user',
+            text: userMsg
+        }]);
+
+        if (activeNode === 'custom_query') {
+            setIsSubmitting(true);
+            try {
+                // Send directly to the new API we just built using Resend
+                const res = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: "Chat Widget User",
+                        email: userMsg.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi)?.[0] || 'Email Provided in Message',
+                        inquiryType: "Other Query",
+                        source: "Live Chat Widget",
+                        message: userMsg
+                    })
+                });
+
+                if (res.ok) {
+                    setTimeout(() => {
+                        setMessages(prev => [...prev, {
+                            id: Date.now() + Math.random(),
+                            sender: 'bot',
+                            text: "Thank you! Your message has been sent successfully. Our team will review it and get back to you shortly.",
+                            options: [{ label: "🔙 Start Over", nextNodeId: "start" }]
+                        }]);
+                        setActiveNode('start_over_state');
+                        setIsSubmitting(false);
+                    }, 800);
+                } else {
+                    throw new Error('Failed');
+                }
+            } catch (error) {
+                setTimeout(() => {
+                    setMessages(prev => [...prev, {
+                        id: Date.now() + Math.random(),
+                        sender: 'bot',
+                        text: "Sorry, we had trouble sending your message. Please try contacting us via the Contact page.",
+                        options: [
+                            { label: "Go to Contact Page", link: "/contact" },
+                            { label: "🔙 Start Over", nextNodeId: "start" }
+                        ]
+                    }]);
+                    setActiveNode('start_over_state');
+                    setIsSubmitting(false);
+                }, 800);
+            }
         }
     };
 
@@ -275,6 +350,30 @@ export const ChatWidget: React.FC = () => {
                                 <div ref={messagesEndRef} />
                             </div>
                         </div>
+
+                        {/* Custom Input Area */}
+                        {activeNode === 'custom_query' && (
+                            <form
+                                onSubmit={handleSendMessage}
+                                className="p-3 bg-white border-t border-slate-200 flex space-x-2"
+                            >
+                                <input
+                                    type="text"
+                                    value={inputText}
+                                    onChange={(e) => setInputText(e.target.value)}
+                                    placeholder="Type your message and email..."
+                                    disabled={isSubmitting}
+                                    className="w-full px-3 py-2 text-sm text-slate-900 bg-slate-100 border-none rounded-md focus:ring-0 focus:outline-none"
+                                />
+                                <button
+                                    type="submit"
+                                    disabled={isSubmitting || !inputText.trim()}
+                                    className="p-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 disabled:opacity-50 transition-colors"
+                                >
+                                    <FaPaperPlane className="w-4 h-4" />
+                                </button>
+                            </form>
+                        )}
                     </motion.div>
                 )}
             </AnimatePresence>
