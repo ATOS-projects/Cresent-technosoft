@@ -4,7 +4,6 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
-import CallButton from "@/components/ui/CallButton";
 import { ChatWidget } from "@/components/ui/ChatWidget";
 
 const inter = Inter({
@@ -37,7 +36,6 @@ export default function RootLayout({
         </main>
         <Footer />
         <WhatsAppButton />
-        <CallButton />
         <ChatWidget />
         <script
           dangerouslySetInnerHTML={{
